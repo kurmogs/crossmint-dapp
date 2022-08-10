@@ -44,8 +44,20 @@ a {
 }
 
 .navbar_right {
-    position: absolute;
-    right: 20px;
+    float: right;
+    line-height: 150px;
+}
+
+.logo-image {
+    width: 200px;
+}
+
+.hero-section {
+    padding: 0 5%;
+}
+
+nav {
+    margin-bottom: 30px;
 }
 
 .pt-30 {
@@ -68,11 +80,6 @@ a {
     padding-bottom: 30px;
 }
 
-.opensea-image {
-    margin-top: -25px;
-    margin-right: 20px;
-}
-
 .fa-link {
     font-size: 45px;
 }
@@ -86,25 +93,7 @@ a {
     font-weight: 500;
     font-size: 60px;
     line-height: 72px;
-    color: #00d1ef;
-}
-
-.ad-text-block {
-    padding-top: 5%;
-}
-
-.ad-text1 {
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 60px;
-    color: #fff;
-    font-family: 'headlinefont';
-}
-
-.ad-text2 {
-    font-size: 36px;
-    color: #fff;
-    font-family: 600;
+    color: #46b104;
 }
 
 .game-section {
@@ -113,7 +102,7 @@ a {
 
 .game-title {
     font-size: 3vw;
-    color: #00d1ef;
+    color: #46b104;
 }
 
 .member-picture {
@@ -142,25 +131,24 @@ a {
 }
 
 .connect-button {
-    background-color: #00d1ef;
-    color: #fff;
+    background-color: #46b104;
+    color: #fff;  
     font-family: 'Rubik';
     font-style: normal;
     font-weight: normal;
-    border: 1px solid #fff!important;
+    border: 1px solid #46b104!important;
     border-radius: 50px;
     font-size: 20px;
     line-height: 46px;
     padding: 5px 25px;
     display: inline-block;
     transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
     z-index: 1;
 }
 
 .connect-button:hover {
-    border: 1px solid #000!important;
+    background-color: #204e03;
+    color: #fff;
 }
 
 /* button animation */
@@ -208,7 +196,7 @@ a {
     font-weight: 500;
     font-size: 55px;
     line-height: 55px;
-    color: #00d1ef;
+    color: #46b104;
 }
 
 .img-thumbnail {
@@ -297,23 +285,19 @@ a {
     border-radius: 50px;
     /* identical to box height, or 100% */
     color: #FFFFFF;
-    background-color: #00d1ef;
-    border: 1px solid #fff;
+    background-color: #46b104;
+    border: 1px solid #46b104;
 }
 
 .mint_button:hover {
-    color: #000;
-    border: 1px solid #000;
+    background-color: #204e03;
+    color: #fff;
 }
 
 .footer-font {
     font-weight: 400 !important;
     font-size: 30px;
 }
-
-/* .footer_round {
-    box-shadow: 0px 0px 10px rgb(255 255 255 / 53%) !important;
-} */
 
 .add-padding {
     padding-right: 12% !important;
@@ -348,7 +332,7 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-out;
-    background-color: #00d1ef;
+    background-color: #46b104;
 
 }
 
@@ -360,7 +344,7 @@ a {
 }
 
 .connected-wallet {
-    background-color: #00d1ef;
+    background-color: #46b104;
     color: #fff;
     font-family: 'Rubik';
     font-style: normal;
@@ -502,11 +486,6 @@ a {
         font-size: 32px!important;
     }
 
-    .dot_data {
-        margin-top: 65px;
-        padding: 0 !important;
-    }
-
 }
 
 @media only screen and (max-width: 930px) {
@@ -540,6 +519,12 @@ a {
     }
 }
 
+@media only screen and (max-width:620px) {
+    .top_title {
+        font-size: 30px;
+    }
+}
+
 @media only screen and (max-width:576px) {
     .font_default {
         font-size: 12px;
@@ -567,20 +552,13 @@ a {
     }
 }
 
-.roadmap_title_back {
-    width: 100%;
-    /* border-left: 15.0vw solid transparent;
-    border-right: 15.0vw solid transparent; */
-    /* border-top: 150px solid #fff; */
-}
-
 .roadmap {
     width: 100%;
 }
 
 .join-discord-title {
     font-size: 4vw;
-    color: #00d1ef;
+    color: #46b104;
 }
 
 .discord-bee {
@@ -600,10 +578,10 @@ a {
 .dot {
     background: #fff;
     box-shadow: 0px 0px 13px #99969687;
-    padding: 0px 10px;
+    padding: 3px 13px;
     margin-left: -5px;
     border-radius: 50%;
-    border: solid 5px #00d1ef;
+    border: solid 5px #46b104;
     z-index: 99;
 }
 
@@ -611,10 +589,10 @@ a {
     position: absolute;
     content: "";
     width: 4px;
-    background: #00d1ef;
+    background: #46b104;
     box-shadow: 0px 0px 7px #00cfef42;
     left: 4%;
-    top: 58px;
+    top: 81px;
     height: 98%;
     z-index: 0;
 }
@@ -638,7 +616,7 @@ a {
 
 .join-button {
     margin-top: 30px;
-    background-color: #00d1ef;
+    background-color: #46b104;
     font-size:2.8vw;
     border: none;
     padding: 5px 30px;
@@ -648,13 +626,14 @@ a {
 }
 
 .join-button:hover {
-    color: #000;
-    border: 1px solid #000!important;
+    background-color: #204e03;
+    color: #fff;
+    border: 1px solid #46b104;
 }
 
 .team-caption {
     margin-top: 20px;
-    color: #00d1ef;
+    color: #46b104;
     font-weight: 900;
     font-size: 2vw;
 }
@@ -700,12 +679,12 @@ img {
 }
 
 .accordion-container {
-    border: #00d1ef 3px solid;
+    border: #46b104 3px solid;
     border-radius: 3px;
 }
 
 .accordion {
-    background-color: #00d1ef;
+    background-color: #46b104;
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -824,8 +803,8 @@ h4 {
 }
 
 .roadmap_round {
-    /* box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.53); */
-    border: solid 3px #00cfefc4;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.53);
+    border: solid 3px #46b104;
     /* background: #04091a; */
 }
 
@@ -853,7 +832,7 @@ h4 {
     }
 
     .top_title {
-        font-size: 20px;
+        font-size: 21px;
         /* line-height: 34px; */
     }
     .top_data {
@@ -870,12 +849,6 @@ h4 {
         font-size: 24px;
         line-height: 24px;
     }
-
-    .roadmap_title_back {
-        /* border-left: 50vw solid transparent;
-        border-right: 50vw solid transparent;
-        border-top: 120px solid #fff; */
-    }
 }
 
 .em-image {
@@ -884,68 +857,6 @@ h4 {
 
 .mlp-8 {
     margin-left: 8% !important;
-}
-
-.common_title {
-    /*  Coming soon to Solana   */
-    font-family: 'Rubik';
-    font-size: 50px;
-    line-height: 208px;
-    font-weight: 600;
-    /* or 167% */
-    display: flex;
-    align-items: center;
-    color: #171717;
-}
-
-.common_title_other {
-    font-family: 'Rubik';
-    font-size: 50px;
-    line-height: 100px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    color: #171717;
-}
-
-.common_subtitle {
-    font-family: 'Rubik';
-    font-size: 1.8vw;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    color: #171717;
-}
-
-.bot-one {
-    width: 19%;
-}
-
-.bot-two {
-    width: 17%; 
-    z-index: 99; 
-    margin-left: 0.5%;
-}
-
-.bot-three {
-    width: 15%; 
-    margin-left: 0%;
-}
-
-.bot-four {
-    width: 14%; 
-    margin-left: 0.5%;
-}
-
-.bot-five {
-    width: 17%; 
-    margin-left: 0.2%;
-}
-
-.bot-six {
-    width: 19%; 
-    margin-left: 1%; 
-    margin-right: 0.8%;
 }
 
 @media only screen and (max-width:1366px) {
@@ -1074,7 +985,7 @@ h4 {
         position: absolute;
         content: "";
         width: 3px;
-        background: #00d1ef;
+        background: #46b104;
         left: 8%;
         top: 60px;
     }
@@ -1082,7 +993,7 @@ h4 {
         width: 50%;
     }
     .dot_data {
-        margin-top: 23px;
+        margin-top: 1px;
     }
     .member_name {
         text-align: center;
@@ -1155,21 +1066,5 @@ h4 {
     .navbar_button p {
         font-size: 4.5vw;
         margin-bottom: 0;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .navbar_right {
-        position: absolute;
-        left: 38%;
-        top: 100px;
-    }
-}
-
-@media only screen and (max-width: 400px) {
-    .navbar_right {
-        position: absolute;
-        left: 34%;
-        top: 100px;
     }
 }

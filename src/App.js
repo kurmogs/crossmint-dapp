@@ -70,43 +70,45 @@ function App() {
 				</div>
 			</section>
 
-			{/* <section className="slide-container">
+			<section className="slide-container">
 				<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
-					<div className="section_title line-height-15">COOLBEEZ NFT</div>
+					<div className="section_title line-height-15">MINETOPIA NFT</div>
 				</div>
 				<div className="coolbeez-content text-center font_general line-height-18 pt-30 wow bounceIn">
-					All metaverse real estate, utilities and subsequent revenues generated in the metaverse by the community real estate portfolio will be 100% owned by our NFT holders and held in the CDF. 
-					All holders become virtual-landlords in the new virtual world with an equal share in the real estate portfolio based on the number of NFTs that you hold!
-					The Community Development Fund will also be used to develop anything from game rooms, events halls and stores to VR meeting and private family rooms. 
+					Minetopia is driven to provide a variety of mining opportunities for those who wish to participate through owning a Minetopia NFT. 
+					Participating in a project that utilizes NFTs to give a stake or ownership in a miner’s reward could boost an individual’s portfolio to the next level through sustainable returns driven by community-purchased ASIC miners.
 				</div>
 				
 				<div className="swiper mySwiper wow fadeIn">
 					<div className="swiper-wrapper">
 						<div className="swiper-slide">
-							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 1.png" alt=""/>
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
 						</div>
 						<div className="swiper-slide">
-							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 2.jpg" alt=""/>
+							<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
 						</div>
 						<div className="swiper-slide">
-							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 3.jpg" alt=""/>
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
 						</div>
 						<div className="swiper-slide">
-							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 4.jpg" alt=""/>
+							<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
 						</div>
 						<div className="swiper-slide">
-							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 5.jpg" alt=""/>
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
 						</div>
 						<div className="swiper-slide">
-							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 6.jpg" alt=""/>
+							<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
 						</div>
 						<div className="swiper-slide">
-							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 7.jpg" alt=""/>
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
+						</div>
+						<div className="swiper-slide">
+							<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
 						</div>
 					</div>
 					<div className="swiper-pagination"></div>
 				</div>
-			</section> */}
+			</section>
 					
 			<section className="join-discord">
 				<div className="row mx-0">

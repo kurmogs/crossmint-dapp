@@ -127,7 +127,7 @@ nav {
 }
 
 .swiper-pagination-bullet-active {
-    background: #fff!important;
+    background: #46b104!important;
 }
 
 .no-display {
@@ -204,8 +204,8 @@ nav {
 }
 
 .img-thumbnail {
-    background-color: #fff;
-    border-color: #fff;
+    background-color: #272C34;
+    border-color: #272C34;
 }
 
 .swiper-slide {

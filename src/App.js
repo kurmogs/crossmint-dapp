@@ -3,7 +3,7 @@ import swal  from 'sweetalert';
 
 function App() {
   const comingSoon = () => {
-	swal("CoolBeez NFT coming soon", "", "info");
+	swal("Minetopia NFT coming soon", "", "info");
   }
 
   return (
@@ -64,7 +64,7 @@ function App() {
 								comingSoon();
 							}}
 						>
-							TRANSFER
+							MINT
 						</button>
 					</div>
 				</div>
@@ -125,7 +125,7 @@ function App() {
 								Or do you want to be a member of our DAO? 
 								Join our Discord to be part of the largest movement ever!
 							</div>
-							<a href="https://discord.gg/A2KY3XChPZ" target="_blank">
+							<a href="https://discord.gg/" target="_blank">
 								<button className="join-button"><i className="fab fa-discord"></i> JOIN DISCORD</button>
 							</a>
 						</div>
@@ -238,8 +238,8 @@ function App() {
 				<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 					<div className="section_title line-height-15">MEET OUR TEAM</div>
 				</div>
-				<div className="row mx-0">
-					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+				<div className="row mx-0 my-5">
+					<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
 						<img className="team-image" src="./assets/images/Minetopia.png"/>
 						<div className="team-caption">
 							WESTIE
@@ -250,7 +250,7 @@ function App() {
 							<a className="color-white" target="_blank" href="">@Westieio</a>
 						</div>
 					</div>
-					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+					<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
 						<img className="team-image" src="./assets/images/christine.png"/>
 						<div className="team-caption">
 							CHRISTINE
@@ -262,7 +262,7 @@ function App() {
 							<a className="color-white" target="_blank" href="">@OnlyEyes4Crypto</a>
 						</div>
 					</div>
-					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+					<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
 						<img className="team-image" src="./assets/images/dxniel.png"/>
 						<div className="team-caption">
 							DXNIEL.ETH
@@ -285,7 +285,7 @@ function App() {
 							<a className="color-white" target="_blank" href="">@CryptoDreko</a>
 						</div>
 					</div> */}
-					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+					<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
 						<img className="team-image" src="./assets/images/mummydumbo.png"/>
 						<div className="team-caption">
 							MUMMYDUMBO
@@ -388,13 +388,16 @@ function App() {
 				<a href="https://twitter.com/" target="_blank">
 					<i className="fab fa-twitter social-icon"></i>
 				</a>
-				<a href="https://www.facebook.com/" target="_blank">
-					<i className="fab fa-facebook social-icon"></i>
+				<a href="https://www.youtube.com/" target="_blank">
+					<i className="fab fa-youtube social-icon"></i>
 				</a>
 				<a href="https://www.instagram.com/" target="_blank">
 					<i className="fab fa-discord social-icon"></i>
 				</a>
 			</section> 
+			{/* <section className="copyright-section font_general text-center">
+				Copyright <i className="far fa-copyright"></i> 2022 All Rights Reserved.
+			</section> */}
 		</div>
     </div>
   );

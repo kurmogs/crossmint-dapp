@@ -371,7 +371,7 @@ nav {
 }
 
 .team-image {
-    padding: 10%;
+    padding: 0%;
 }
 
 .top_data {
@@ -406,6 +406,10 @@ nav {
     padding-top: 50px;
     font-size: 20px;
     color: #e5e5e5!important;
+}
+
+.copyright-section {
+    color: #fff;
 }
 
 /* button animation */
@@ -748,7 +752,7 @@ img {
 }
 
 .container-fluid {
-    padding: 0 30px;
+    padding: 10px 30px;
 }
 
 .accordion.active {
@@ -923,6 +927,10 @@ h4 {
     .roadmap_right_content {
         padding-left: 5%;
         padding-right: 5%;
+    }
+
+    .team-image {
+        padding: 10%;
     }
 
     .welcome-text-block {

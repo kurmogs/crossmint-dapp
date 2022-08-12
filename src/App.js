@@ -312,7 +312,7 @@ function App() {
 
 			<section className="section-qa">
 				<div className="col-12 text-center d-flex justify-content-center">
-					<span className="section_title gtfcduyjdc wow fadeInUp">FAQS</span>
+					<span className="section_title my-0 py-0 gtfcduyjdc wow fadeInUp">FAQS</span>
 				</div>
 				<div className="content container-fluid mt-md-5 mt-4 footer-padding">
 					<div className="mt-2 accordion-container footer_round wow slideInRight">

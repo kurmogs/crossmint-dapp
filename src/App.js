@@ -274,7 +274,7 @@ function App() {
 							<a className="color-white" target="_blank" href="">@Dxniel.ETH</a>
 						</div>
 					</div>
-					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+					{/* <div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
 						<img className="team-image" src="./assets/images/cryptodreko.png"/>
 						<div className="team-caption">
 							CRYPTODREKO
@@ -284,7 +284,7 @@ function App() {
 							<div className="twitter">Twitter</div>
 							<a className="color-white" target="_blank" href="">@CryptoDreko</a>
 						</div>
-					</div>
+					</div> */}
 					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
 						<img className="team-image" src="./assets/images/mummydumbo.png"/>
 						<div className="team-caption">
@@ -296,7 +296,7 @@ function App() {
 							<div className="off-chain">(Off-Chain)</div>
 						</div>
 					</div>
-					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+					{/* <div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
 						<img className="team-image" src="./assets/images/wealthdash.png"/>
 						<div className="team-caption">
 							WEALTHDASH
@@ -306,7 +306,7 @@ function App() {
 							<div className="twitter">Twitter</div>
 							<a className="color-white" target="_blank" href="">@dash_wealth</a>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</section>
 

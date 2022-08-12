@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 @font-face {
     font-family: 'megrimfont';
     src: url('../fonts/GABRWFFR.TTF');
@@ -32,7 +35,9 @@
 }
 
 body {
-    background-color: #272C34;
+    background-color: #190040;
+    /* background: url(../images/background1.jpg); */
+    /* background-size: 100%; */
 }
 
 .main-grey {
@@ -47,6 +52,22 @@ a {
     color: #fff!important;
 }
 
+.menu-btn {
+    position: absolute;
+    right: 35px;
+    top: 130px;
+    text-decoration: none;
+    color: #46b104!important;
+    font-family: headlinefont;
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+}
+
+.hero-section {
+    margin-top: -30px;
+}
+
 .navbar_right {
     float: right;
     line-height: 150px;
@@ -54,26 +75,76 @@ a {
 
 .logo-image {
     width: 200px;
-}
-
-.hero-section {
-    padding: 0 5%;
-}
-
-nav {
-    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-top: 20px;
 }
 
 .pt-30 {
     padding-top: 30px!important;
 }
 
-.mobile-hero-back {
+nav {
+    width: 100%;
+}
+
+.nav-item {
+    color: #46b104;
+}
+
+.nav-item:hover {
+    color: #337e04;
+}
+
+.list {
+    list-style-type: none;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -45px;
+    padding-left: 0;
+    margin-left: 200px;
+}
+.items {
+    margin-right: 25px;
+    font-size: 24px;
+    color: #f1f1f1;
+    cursor: pointer;
+    font-family: "headlinefont";
+}
+
+.btn {
     display: none;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    padding: 5px;
+    color: #000;
+    font-size: 18px;
+}
+
+.about-section {
+    padding-bottom: 50px;
+    background: url(../images/background5.jpg);
+    background-size: 100% 100%;
+    color: yellow!important;
+}
+
+.team-section {
+    background: url(../images/background2.jpg);
+    background-size: 100% 100%;
+}
+
+.content-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .social-icon {
-    font-size: 50px;
+    font-size: 30px;
     margin-right: 20px;
     color: #46b104!important;
 }
@@ -148,6 +219,8 @@ nav {
     display: inline-block;
     transition: all 0.3s;
     z-index: 1;
+    margin-top: 55px;
+    margin-right: 15px;
 }
 
 .connect-button:hover {
@@ -384,6 +457,10 @@ nav {
     color: #000;
 }
 
+.sub-trans {
+    width: 80%;
+}
+
 .top_title {
     font-family: 'Rubik';
     font-style: normal;
@@ -408,7 +485,14 @@ nav {
     color: #e5e5e5!important;
 }
 
+.footer-section {
+    margin-top: 80px;
+    padding: 3% 0;
+    background-color: #000;
+}
+
 .copyright-section {
+    font-size: 22px;
     color: #fff;
 }
 
@@ -509,6 +593,35 @@ nav {
         font-size: 32px!important;
     }
 
+}
+
+@media screen and (max-width: 950px){
+    .list {
+        flex-direction: column;
+        height: auto;
+        margin-top: 50px;
+        margin-left: 0;
+    }
+    .hero-section {
+        margin-top: 20px;
+    }
+    .items:nth-child(1){
+        border-top: 1px solid rgba(255, 255, 255, 0.555);
+        margin-top: 50px;
+    }
+    .items {
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.555);
+        text-align: center;
+        margin-right: 0px;
+        padding: 20px 0;
+    }
+    .btn {
+        display: block;
+    }
+    .menu-btn {
+        display: block;
+    }
 }
 
 @media only screen and (max-width: 930px) {
@@ -625,10 +738,11 @@ nav {
 }
 
 .join-discord {
-    padding: 2% 2% 0 2%;
-    background: url(../images/discord_background.jpg);
-    background-size: 100%;
+    padding: 2% 2% 4% 2%;
+    background: url(../images/background4.jpg);
+    background-size: 100% 100%;
     margin-top: 100px;
+    
 }
 
 .join-discord-content {
@@ -699,6 +813,7 @@ img {
 
 .section-qa {
     background: transparent;
+    margin-top: 80px;
 }
 
 .section-qa .title h2 {
@@ -907,6 +1022,12 @@ h4 {
     }
     .team-desc {
         font-size: 1.8vw;
+    }
+    .sub-trans {
+        width: 50%;
+    }
+    .copyright-section {
+        margin: 30px 0;
     }
     .common_title {
         font-size: 56px;

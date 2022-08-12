@@ -43,6 +43,10 @@ a {
     text-decoration: none!important;
 }
 
+.color-white {
+    color: #fff!important;
+}
+
 .navbar_right {
     float: right;
     line-height: 150px;
@@ -71,7 +75,7 @@ nav {
 .social-icon {
     font-size: 50px;
     margin-right: 20px;
-    color: #2081e2!important;
+    color: #46b104!important;
 }
 
 .social-links {
@@ -327,6 +331,14 @@ nav {
     align-items: center;
 }
 
+.twitter {
+    color: #46b104;
+}
+
+.off-chain {
+    margin-top: -15px;
+}
+
 .panel {
     padding: 0 18px;
     max-height: 0;
@@ -356,6 +368,10 @@ nav {
     border-radius: 5px;
     overflow: hidden;
     z-index: 1;
+}
+
+.team-image {
+    padding: 10%;
 }
 
 .top_data {
@@ -411,7 +427,10 @@ nav {
         font-size: 38px!important;
     }
     .team-caption{
-        font-size: 26px!important;
+        font-size: 24px!important;
+    }
+    .team-desc {
+        font-size: 18px!important;
     }
 }
 
@@ -635,9 +654,13 @@ nav {
     margin-top: 20px;
     color: #46b104;
     font-weight: 900;
-    font-size: 2vw;
+    font-size: 1.8vw;
 }
 
+.team-desc {
+    font-size: 1.3vw;
+    color: #fff;
+}
 
 img {
     max-width: 100%;
@@ -876,7 +899,10 @@ h4 {
 @media only screen and (max-width:991px) {
     .team-caption {
         font-size: 3vw;
-        margin-bottom: 35px;
+        /* margin-bottom: 35px; */
+    }
+    .team-desc {
+        font-size: 1.8vw;
     }
     .common_title {
         font-size: 56px;
@@ -959,6 +985,10 @@ h4 {
         font-size: 5vw;
     }
         
+    .team-desc {
+        font-size: 3vw;
+    }
+
     .text-block {
         margin-bottom: 40px;
     }

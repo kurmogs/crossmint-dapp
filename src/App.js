@@ -83,7 +83,7 @@ function App() {
 				<div className="swiper mySwiper wow fadeIn">
 					<div className="swiper-wrapper">
 						<div className="swiper-slide">
-							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 1.jpg" alt=""/>
+							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 1.png" alt=""/>
 						</div>
 						<div className="swiper-slide">
 							<img className="slide_image img-thumbnail" src="./assets/images/Mascots V3 2.jpg" alt=""/>
@@ -151,6 +151,7 @@ function App() {
 										<div className="col-md-11 col-10 d-inline mt-0">
 											<div className="">
 												<span className="top_title_num roadmap_font"> </span>
+									
 												<span className="top_title line-height-18">PHASE 01 (AUG 2022)</span>
 											</div>
 											<div className="font_general line-height-18">
@@ -231,144 +232,167 @@ function App() {
 				</div>
 			</div>		
 
-			{/* <section className="section-qa">
-				<div className="col-12 text-center d-flex justify-content-center">
-					<span className="section_title gtfcduyjdc wow fadeInUp">FAQS</span>
-				</div>
-				<div className="content container-fluid mt-md-5 mt-4 footer-padding">
-					<div className="mt-2 accordion-container footer_round wow slideInRight">
-						<button className="accordion py-0">
-							<h1 className="footer-font">What is CoolBeez?</h1>
-						</button>
-						<div className="panel">
-							<p>CoolBeez is a Community NFT collection with unique holder benefits and is part of the My Meta Foundation. </p>
-						</div>
-					</div>
-					<div className="mt-2 accordion-container footer_round wow slideInRight">
-						<button className="accordion py-0">
-							<h1 className="footer-font">When will the CoolBeez NFT collection be launched and minted?</h1>
-						</button>
-						<div className="panel">
-							<p>The CoolBeez NFT collection is expected to be launched and minted by the end of March 2022. </p>
-						</div>
-					</div>
-					<div className="mt-2 accordion-container footer_round wow slideInRight">
-						<button className="accordion py-0">
-							<h1 className="footer-font">What is the expected floor price for CoolBeez? </h1>
-						</button>
-						<div className="panel">
-							<p>The expected floor price of the CoolBeez NFT collection will be announced on our Discord server shortly. </p>
-						</div>
-					</div>
-					<div className="mt-2 accordion-container footer_round wow slideInRight">
-						<button className="accordion py-0">
-							<h1 className="footer-font">Where can I buy a CoolBeez NFT? </h1>
-						</button>
-						<div className="panel">
-							<p>You can get hold of a CoolBeez NFT by visiting OpenSea or directly from this page by linking your wallet. CoolBeez NFT collection on OpenSea: https://opensea.io/collection/coolbeez </p>
-						</div>
-					</div>
-					<div className="mt-2 accordion-container footer_round wow slideInRight">
-						<button className="accordion py-0">
-							<h1 className="footer-font">When will the Whitelist be available? </h1>
-						</button>
-						<div className="panel">
-							<p>The Whitelist for the CoolBeez NFT collection will be opened by mid-February 2022, but due to the increasing demand that we have already, we may bring this forward. 
-								Places are limited but the first 100 members to join our discord will be guaranteed a place. 
-								Places will also be available through giveaways and competitions hosted on Discord.</p>
-						</div>
-					</div>
-					<div className="mt-2 accordion-container footer_round wow slideInRight">
-						<button className="accordion py-0">
-							<h1 className="footer-font">What utility does the CoolBeez NFT have?  </h1>
-						</button>
-						<div className="panel">
-							<p>CoolBeez NFT owners will own a share in the Community Development Fund and in the virtual metaverse real estate portfolio. Each NFT you hold allows you one vote to decide how the CDF is used to develop the metaverse land that the community owns. </p>
-						</div>
-					</div>
-					<div className="mt-2 accordion-container footer_round wow slideInRight">
-						<button className="accordion py-0">
-							<h1 className="footer-font">How will you grow the community after the CoolBeez collection is sold out? </h1>
-						</button>
-						<div className="panel">
-							<p>The CoolBeez collection is part of the My Meta Foundation. The foundations road map is to release 6 NFT collections throughout 2022 and 2023. The next in the series is ‘Anti-Social Elephant Club’ with work on the project already underway. Holders of all future NFT collections will join the community and proceeds from the sales of the collections will be donated to the same Community Development Fund. As the community grows, so does the fund and the portfolio.</p>
-						</div>
-					</div>
-					<div className="mt-2 accordion-container footer_round wow slideInRight">
-						<button className="accordion py-0">
-							<h1 className="footer-font">Why does the project support good causes and how will that affect the Community Development Fund?</h1>
-						</button>
-						<div className="panel">
-							<p>We believe that the Future of Giving lays in the power of Web 3.0 and we want to create a bridge between our two worlds. The creators will donate a percentage of the foundation’s profits to good causes. The Community Development Fund will NOT be used for charitable donations unless the community decide to do so. </p>
-						</div>
-					</div>
-				</div>
-			</section> */}
-
 			<section className="team-section">
 				<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 					<div className="section_title line-height-15">MEET OUR TEAM</div>
 				</div>
 				<div className="row mx-0">
-					<div className="col-lg-1 col-md-0"></div>
 					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
-						<img className="team-image" src="./assets/images/Mascots V3 1.png"/>
+						<img className="team-image" src="./assets/images/Minetopia.png"/>
 						<div className="team-caption">
-							Founder <br/>
-							Dan Maguire 
+							WESTIE
+						</div>
+						<div className="team-desc">
+							<div className="my-2">CEO</div>
+							<div className="twitter">Twitter</div>
+							<a className="color-white" target="_blank" href="">@Westieio</a>
 						</div>
 					</div>
 					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
-						<img className="team-image" src="./assets/images/Mascots V3 2.png"/>
+						<img className="team-image" src="./assets/images/christine.png"/>
 						<div className="team-caption">
-							Co-Founder <br/>
-							Bart Vonk 
+							CHRISTINE
 						</div>
-					</div>
-					<div className="col-lg-0 col-md-3 col-sm-0 bingo-col"></div>
-					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
-						<img className="team-image" src="./assets/images/Mascots V3 3.png"/>
-						<div className="team-caption">
-							Visionary <br/>
-							Ella Maguire 
-						</div>
-					</div>
-					<div className="col-lg-0 col-md-3 col-sm-0 bingo-col"></div>
-					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
-						<img className="team-image" src="./assets/images/Mascots V3 4.png"/>
-						<div className="team-caption">
-							Dev <br/>
-							Malin Zhang
+						<div className="team-desc">
+							<div className="my-2">CMO</div>
+							<div className="my-2">Chief Marketing Officer</div>
+							<div className="twitter">Twitter</div>
+							<a className="color-white" target="_blank" href="">@OnlyEyes4Crypto</a>
 						</div>
 					</div>
 					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
-						<img className="team-image" src="./assets/images/Mascots V3 5.png"/>
+						<img className="team-image" src="./assets/images/dxniel.png"/>
 						<div className="team-caption">
-							Artist <br/>
-							Anon
+							DXNIEL.ETH
+						</div>
+						<div className="team-desc">
+						    <div className="my-2">CCO</div>
+							<div className="my-2">ChiefCommercialOfficer</div>
+							<div className="twitter">Twitter</div>
+							<a className="color-white" target="_blank" href="">@Dxniel.ETH</a>
 						</div>
 					</div>
-					<div className="col-lg-1 col-md-0"></div>
+					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+						<img className="team-image" src="./assets/images/cryptodreko.png"/>
+						<div className="team-caption">
+							CRYPTODREKO
+						</div>
+						<div className="team-desc">
+							<div className="my-2">Project Advisor</div>
+							<div className="twitter">Twitter</div>
+							<a className="color-white" target="_blank" href="">@CryptoDreko</a>
+						</div>
+					</div>
+					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+						<img className="team-image" src="./assets/images/mummydumbo.png"/>
+						<div className="team-caption">
+							MUMMYDUMBO
+						</div>
+						<div className="team-desc">
+							<div className="my-2">CMO</div>
+							<div className="my-2">ChiefMarketingOfficer</div>
+							<div className="off-chain">(Off-Chain)</div>
+						</div>
+					</div>
+					<div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
+						<img className="team-image" src="./assets/images/wealthdash.png"/>
+						<div className="team-caption">
+							WEALTHDASH
+						</div>
+						<div className="team-desc">
+							<div className="my-2">Project Advisor</div>
+							<div className="twitter">Twitter</div>
+							<a className="color-white" target="_blank" href="">@dash_wealth</a>
+						</div>
+					</div>
 				</div>
 			</section>
 
-		   {/* <section className="social-links text-center">
-				<a href="https://twitter.com/CoolBeezNFT" target="_blank">
+			<section className="section-qa">
+				<div className="col-12 text-center d-flex justify-content-center">
+					<span className="section_title gtfcduyjdc wow fadeInUp">FAQS</span>
+				</div>
+				<div className="content container-fluid mt-md-5 mt-4 footer-padding">
+					<div className="mt-2 accordion-container footer_round wow slideInRight">
+						<button className="accordion py-1">
+							<h1 className="footer-font">What is DAO?</h1>
+						</button>
+						<div className="panel">
+							<p>DAO is an organization managed by a project’s 
+								token holders and governed by rules written into smart contracts and deployed to the blockchain. </p>
+						</div>
+					</div>
+					<div className="mt-2 accordion-container footer_round wow slideInRight">
+						<button className="accordion py-1">
+							<h1 className="footer-font">Why Ethereum?</h1>
+						</button>
+						<div className="panel">
+							<p>Ethereum Blockchain is quickly becoming a popular choice for a large number of people. Numerous 
+								cryptocurrency projects are launched in the following years based on its platform and ERC20 tokens.</p>
+						</div>
+					</div>
+					<div className="mt-2 accordion-container footer_round wow slideInRight">
+						<button className="accordion py-1">
+							<h1 className="footer-font">When will the Minetopia NFT collection be launched and minted?</h1>
+						</button>
+						<div className="panel">
+							<p>The Minetopia NFT collection is expected to be launched and minted by the end of August 2022. </p>
+						</div>
+					</div>
+					<div className="mt-2 accordion-container footer_round wow slideInRight">
+						<button className="accordion py-1">
+							<h1 className="footer-font">What is the expected floor price for Minetopia? </h1>
+						</button>
+						<div className="panel">
+							<p>The expected floor price of the Minetopia NFT collection will be announced on our Discord server shortly. </p>
+						</div>
+					</div>
+					<div className="mt-2 accordion-container footer_round wow slideInRight">
+						<button className="accordion py-1">
+							<h1 className="footer-font">Where can I buy a Minetopia NFT? </h1>
+						</button>
+						<div className="panel">
+							<p>You can get hold of a Minetopia NFT by visiting OpenSea or directly from this page by linking your wallet.</p>
+						</div>
+					</div>
+					<div className="mt-2 accordion-container footer_round wow slideInRight">
+						<button className="accordion py-1">
+							<h1 className="footer-font">What utility does the Minetopia NFT have?  </h1>
+						</button>
+						<div className="panel">
+							<p>Minetopia NFT owners will own a share in the Community Development Fund and in the virtual metaverse real estate portfolio. Each NFT you hold allows you one vote to decide how the CDF is used to develop the metaverse land that the community owns. </p>
+						</div>
+					</div>
+					<div className="mt-2 accordion-container footer_round wow slideInRight">
+						<button className="accordion py-1">
+							<h1 className="footer-font">How will you grow the community after the Minetopia collection is sold out? </h1>
+						</button>
+						<div className="panel">
+							<p>The Minetopia collection is part of the My Meta Foundation. The foundations road map is to release 6 NFT collections throughout 2022 and 2023. The next in the series is ‘Anti-Social Elephant Club’ with work on the project already underway. Holders of all future NFT collections will join the community and proceeds from the sales of the collections will be donated to the same Community Development Fund. As the community grows, so does the fund and the portfolio.</p>
+						</div>
+					</div>
+					<div className="mt-2 accordion-container footer_round wow slideInRight">
+						<button className="accordion py-1">
+							<h1 className="footer-font">Why does the project support good causes?</h1>
+						</button>
+						<div className="panel">
+							<p>We believe that the Future of Giving lays in the power of Web 3.0 and we want to create a bridge between our two worlds.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		   <section className="social-links text-center">
+				<a href="https://twitter.com/" target="_blank">
 					<i className="fab fa-twitter social-icon"></i>
 				</a>
-				<a href="https://www.facebook.com/coolbeeznft" target="_blank">
+				<a href="https://www.facebook.com/" target="_blank">
 					<i className="fab fa-facebook social-icon"></i>
 				</a>
-				<a href="https://www.instagram.com/coolbeeznft/" target="_blank">
-					<i className="fab fa-instagram social-icon"></i>
+				<a href="https://www.instagram.com/" target="_blank">
+					<i className="fab fa-discord social-icon"></i>
 				</a>
-				<a href="https://www.instagram.com/coolbeeznft/" target="_blank">
-					<img className="opensea-image" src="./assets/images/opensea.png"/>
-				</a>
-				<a href=" https://www.mymetafoundation.org/" target="_blank">
-					<i className="fa fa-link social-icon"></i>
-				</a>
-			</section>  */}
+			</section> 
 		</div>
     </div>
   );

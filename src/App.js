@@ -141,25 +141,13 @@ function App() {
 								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
 							</div>
 							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
+								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
 							</div>
 							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
+								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
 							</div>
 							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
-							</div>
-							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
-							</div>
-							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
-							</div>
-							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
-							</div>
-							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
+								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
 							</div>
 						</div>
 						<div className="swiper-pagination"></div>

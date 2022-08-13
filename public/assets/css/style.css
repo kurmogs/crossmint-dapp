@@ -258,7 +258,7 @@ nav {
 }
 
 .swiper-pagination-bullet {
-    background: #000;
+    background: #999;
 }
 
 .swiper-pagination-bullet-active {
@@ -486,7 +486,7 @@ nav {
 }
 
 .tokenomic-paragraph {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .panel p {
@@ -997,7 +997,7 @@ h4 {
 }
 
 .slide-container .mySwiper {
-    padding: 4vw 2vw 2vw 2vw;
+    padding: 4vw 4vw 2vw 4vw;
 }
 
 .swiper-pagination-bullet {

@@ -126,13 +126,13 @@ nav {
 
 .about-section {
     padding-bottom: 50px;
-    background: url(../images/background5.jpg);
+    /* background: url(../images/background5.jpg); */
     background-size: 100% 100%;
     color: yellow!important;
 }
 
 .team-section {
-    background: url(../images/background2.jpg);
+    /* background: url(../images/background2.jpg); */
     background-size: 100% 100%;
 }
 
@@ -802,7 +802,7 @@ nav {
 
 .join-discord {
     padding: 2% 2% 4% 2%;
-    background: url(../images/background4.jpg);
+    /* background: url(../images/background4.jpg); */
     background-size: 100% 100%;
     margin-top: 100px;
     

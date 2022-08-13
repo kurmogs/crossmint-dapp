@@ -11,6 +11,15 @@ html {
 }
 
 @font-face {
+    font-family: 'railwayfont';
+    src: url('../fonts/Raleway-ExtraBold.ttf');
+}
+
+.railway-font {
+    font-family: 'railwayfont';
+}
+
+@font-face {
     font-family: 'Rubik';
     src: url('../fonts/Rubik-VariableFont_wght.ttf');
 }
@@ -65,6 +74,17 @@ a {
     display: none;
 }
 
+.social-block {
+    position: absolute;
+    right: 35px;
+    top: 10px;
+    text-decoration: none;
+    color: #46b104!important;
+    font-family: headlinefont;
+    font-size: 28px;
+    cursor: pointer;
+}
+
 .hero-section {
     margin-top: -30px;
 }
@@ -108,11 +128,11 @@ nav {
     margin-left: 50px;
 }
 .items {
-    margin-right: 30px;
-    font-size: 24px;
+    margin-right: 20px;
+    font-size: 20px;
     color: #f1f1f1;
     cursor: pointer;
-    font-family: "headlinefont";
+    font-family: "railwayfont";
 }
 
 .btn {
@@ -526,7 +546,7 @@ nav {
 }
 
 .sub-trans {
-    width: 80%;
+    width: 300px;
 }
 
 .top_title {
@@ -560,8 +580,9 @@ nav {
 }
 
 .copyright-section {
-    font-size: 22px;
+    font-size: 16px;
     color: #fff;
+    margin-top: 30px;
 }
 
 /* button animation */
@@ -1093,13 +1114,10 @@ h4 {
     .team-desc {
         font-size: 1.8vw;
     }
-    .sub-trans {
-        width: 50%;
-    }
-    .copyright-section {
+    /* .copyright-section {
         font-size: 3.5vw;
         margin: 30px 0;
-    }
+    } */
     .common_title {
         font-size: 56px;
         line-height: 78px;

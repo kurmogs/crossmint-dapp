@@ -34,13 +34,40 @@ function App() {
 				<a href="/"><img className="logo-image" src="./assets/images/full_logo.png"/></a>
 				{(toggleMenu || screenWidth > 1060) && (
 					<ul className="list">
-						<li className="items"><a className="nav-item" href="#buy">Buy</a></li>
-						<li className="items"><a className="nav-item" href="#NFT">Our NFT</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Home</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Mint</a></li>
 						<li className="items"><a className="nav-item" href="#roadmap">Roadmap</a></li>
+						<li className="items"><a className="nav-item" href="#NFT">Whitepaper</a></li>
 						<li className="items"><a className="nav-item" href="#team">Team</a></li>
 						<li className="items"><a className="nav-item" href="#faq">Faq</a></li>
+						{/* <li className="items">
+							<a href="https://discord.gg/bJ9Z87dFDp" target="_blank">
+								Discord
+							</a>
+						</li>
+						<li className="items">
+							<a href="https://twitter.com/nft_minetopia" target="_blank">
+								Twitter
+							</a>
+						</li>
+						<li className="items">
+							<a href="https://www.youtube.com/" target="_blank">
+								Youtube
+							</a>
+						</li> */}
 					</ul>
 				)}
+				<div className="social-block">
+					<a href="https://twitter.com/nft_minetopia" target="_blank">
+						<i className="fab fa-twitter social-icon"></i>
+					</a>
+					<a href="https://www.youtube.com/" target="_blank">
+						<i className="fab fa-youtube social-icon"></i>
+					</a>
+					<a href="https://discord.gg/bJ9Z87dFDp" target="_blank">
+						<i className="fab fa-discord social-icon"></i>
+					</a>
+				</div>
 				<a onClick={toggleNav} className="menu-btn"><i className="fas fa-bars"></i></a>
 				<div className="navbar_right">
 					<button className="connect-button btn ml-2">
@@ -124,17 +151,22 @@ function App() {
 						>
 							MINT
 						</button>
-						{/* <button 
-							className="mint_button mt-3"
-							onClick={(e) => {
-								e.preventDefault();
-								comingSoon();
-							}}
-						>
-							CrossMint
-						</button> */}
 					</div>
-					<div className="swiper mySwiper wow fadeIn">
+					<div className="row mx-0 main-container">
+						<div className="col-lg-3 col-md-6 col-sm-12">
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
+						</div>
+						<div className="col-lg-3 col-md-6 col-sm-12">
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
+						</div>
+						<div className="col-lg-3 col-md-6 col-sm-12">
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
+						</div>
+						<div className="col-lg-3 col-md-6 col-sm-12">
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
+						</div>
+					</div>
+					{/* <div className="swiper mySwiper wow fadeIn">
 						<div className="swiper-wrapper">
 							<div className="swiper-slide">
 								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
@@ -150,7 +182,7 @@ function App() {
 							</div>
 						</div>
 						<div className="swiper-pagination"></div>
-					</div>
+					</div> */}
 				</section>
 						
 				<section className="join-discord">
@@ -500,14 +532,14 @@ function App() {
 					</div>
 				</section>
 			</div>
-			<section className="footer-section row mx-0">
-				<div className="col-lg-3 col-md-12 text-center content-center">
+			<section className="footer-section">
+				<div className="text-center">
 					<img className="sub-trans" src="./assets/images/sub_trans.png"/>
 				</div>
-				<div className="col-lg-7 col-md-12 copyright-section text-center content-center">
+				<div className="copyright-section text-center">
 					Copyright <i className="far fa-copyright"></i> 2022 All Rights Reserved by Minetopia.
 				</div>
-				<div className="col-lg-2 col-md-12 text-center content-center">
+				{/* <div className="col-lg-2 col-md-12 text-center content-center">
 					<a href="https://twitter.com/nft_minetopia" target="_blank">
 						<i className="fab fa-twitter social-icon"></i>
 					</a>
@@ -517,7 +549,7 @@ function App() {
 					<a href="https://discord.gg/bJ9Z87dFDp" target="_blank">
 						<i className="fab fa-discord social-icon"></i>
 					</a>
-				</div>
+				</div> */}
 			</section>
 		</div>
 	);

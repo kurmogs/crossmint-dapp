@@ -32,7 +32,7 @@ function App() {
 		<div>
 			<nav> 
 				<a href="/"><img className="logo-image" src="./assets/images/full_logo.png"/></a>
-				{(toggleMenu || screenWidth > 950) && (
+				{(toggleMenu || screenWidth > 1060) && (
 					<ul className="list">
 						<li className="items"><a className="nav-item" href="#buy">Buy</a></li>
 						<li className="items"><a className="nav-item" href="#NFT">Our NFT</a></li>
@@ -74,7 +74,7 @@ function App() {
 							<span className="section_title line-height-15">WELCOME TO THE MINETOPIA</span>
 						</div>
 						<CountdownTimer targetDate={dateTimeAfterThreeDays} />
-						<div className="text-center pt-30 px-5 line-height-15 font_general wow fadeInUp">
+						<div className="text-justify pt-30 px-5 line-height-15 font_general wow fadeInUp">
 							Minetopia presents an opportunity for individuals to enter mining through the utility of Non-fungible 
 							Tokens (NFTs). The potential mining options will include Bitcoin (BTC), Ethereum Classic (ETC), 
 							Kadena (KDA), and Litecoin (LTC) with free Dogecoin (DOGE). As such, the project has found the 
@@ -130,7 +130,7 @@ function App() {
 					<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 						<div className="section_title line-height-15">MINETOPIA NFT</div>
 					</div>
-					<div className="coolbeez-content text-center font_general line-height-18 pt-30 wow bounceIn">
+					<div className="coolbeez-content text-justify font_general line-height-18 pt-30 wow bounceIn">
 						Minetopia is driven to provide a variety of mining opportunities for those who wish to participate through owning a Minetopia NFT. 
 						Participating in a project that utilizes NFTs to give a stake or ownership in a miner’s reward could boost an individual’s portfolio to the next level through sustainable returns driven by community-purchased ASIC miners.
 					</div>
@@ -176,7 +176,7 @@ function App() {
 								<div className="join-discord-title rubik-font">
 									JOIN OUR DISCORD
 								</div>
-								<div className="join-discord-content">
+								<div className="join-discord-content text-justify">
 									Do you want to be on the whitelist? 
 									Or do you want to be a member of our DAO? 
 									Join our Discord to be part of the largest movement ever!
@@ -496,10 +496,18 @@ function App() {
 								<h1 className="footer-font">TOKENOMICS</h1>
 							</button>
 							<div className="panel">
-								<p><b>The Community Wallet,</b> will share its rewards from all the Minetopia NFT Phases. This allows the rewards to be increasingly balanced and reliable as the Minetopia miners are diversified through any future NFT Phases.<br/>
-									<b>The Expansion Wallet,</b> will enable the DAO to compound through governance. This is where 1 NFT = 1 vote comes into play, what miners are potentially purchased with these funds and how those tokens are managed such as holding for future value.<br/>
-									<b>The Maintenance & Team Wallet,</b> will provide the necessary funds for expenses associated with up-
-									keeping the miners, development costs, and team payroll.</p>
+								<p>
+									<div>
+										<b>The Community Wallet,</b> will share its rewards from all the Minetopia NFT Phases. This allows the rewards to be increasingly balanced and reliable as the Minetopia miners are diversified through any future NFT Phases.
+									</div>
+									<div className="tokenomic-paragraph">
+										<b>The Expansion Wallet,</b> will enable the DAO to compound through governance. This is where 1 NFT = 1 vote comes into play, what miners are potentially purchased with these funds and how those tokens are managed such as holding for future value.
+									</div>
+									<div className="tokenomic-paragraph">
+										<b>The Maintenance & Team Wallet,</b> will provide the necessary funds for expenses associated with up-
+										keeping the miners, development costs, and team payroll.
+									</div>
+								</p>
 							</div>
 						</div>
 					</div>

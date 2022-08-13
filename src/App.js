@@ -113,7 +113,7 @@ function App() {
 								>
 									MINT
 								</button>
-								<button 
+								{/* <button 
 									className="mint_button mt-3"
 									onClick={(e) => {
 										e.preventDefault();
@@ -121,7 +121,7 @@ function App() {
 									}}
 								>
 									CrossMint
-								</button>
+								</button> */}
 							</div>
 						</div>
 					</div>

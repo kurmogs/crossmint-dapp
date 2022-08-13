@@ -276,8 +276,8 @@ nav {
     font-weight: normal;
     border: 1px solid #46b104!important;
     border-radius: 50px;
-    font-size: 20px;
-    line-height: 46px;
+    font-size: 18px;
+    line-height: 35px;
     padding: 5px 25px;
     display: inline-block;
     transition: all 0.3s;
@@ -876,7 +876,7 @@ img {
 
 .section-qa {
     background: transparent;
-    margin-top: 80px;
+    margin-top: 20px;
 }
 
 .section-qa .title h2 {
@@ -1090,6 +1090,7 @@ h4 {
         width: 50%;
     }
     .copyright-section {
+        font-size: 3.5vw;
         margin: 30px 0;
     }
     .common_title {
@@ -1115,6 +1116,11 @@ h4 {
 
     .team-image {
         padding: 10%;
+        margin-top: 0!important;
+    }
+
+    .team-block {
+        margin-top: 0!important;
     }
 
     .welcome-text-block {
@@ -1168,7 +1174,7 @@ h4 {
     }
 
     .team-image {
-        width: 60%;
+        width: 70%;
         margin-top: 30px;
     }
 
@@ -1222,7 +1228,7 @@ h4 {
     }
 }
 
-@media only screen and (max-width:576px) {
+@media only screen and (max-width: 576px) {
     .common_title {
         font-size: 32px;
         line-height: 37px;
@@ -1236,9 +1242,6 @@ h4 {
         text-align: center;
         /* or 167% */
     }
-}
-
-@media only screen and (max-width: 576px) {
     .pc {
         display: none;
     }
@@ -1289,4 +1292,26 @@ h4 {
         font-size: 4.5vw;
         margin-bottom: 0;
     }
+    .logo-image {
+        width: 100px;
+        margin-left: 15px;
+        margin-top: 20px;
+    }
+    .items {
+        font-size: 20px;
+        padding: 15px 0;
+    }
+    .connect-button {
+        font-size: 14px;
+        padding: 5px 15px;
+        line-height: 25px;
+        top: -30px;
+        right: -5px;
+    }
+    .menu-btn {
+        top:65px;
+        font-size: 24px;
+        right: 15px;
+    }
 }
+

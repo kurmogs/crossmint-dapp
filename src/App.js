@@ -34,7 +34,6 @@ function App() {
 				<a href="/"><img className="logo-image" src="./assets/images/full_logo.png"/></a>
 				{(toggleMenu || screenWidth > 950) && (
 					<ul className="list">
-						<li className="items"><a className="nav-item" href="#">Home</a></li>
 						<li className="items"><a className="nav-item" href="#buy">Buy</a></li>
 						<li className="items"><a className="nav-item" href="#NFT">Our NFT</a></li>
 						<li className="items"><a className="nav-item" href="#roadmap">Roadmap</a></li>
@@ -300,7 +299,7 @@ function App() {
 						<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 							<div className="section_title line-height-15">MEET OUR TEAM</div>
 						</div>
-						<div className="row mx-0 my-5">
+						<div className="row mx-0 my-5 team-block">
 							<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
 								<img className="team-image" src="./assets/images/kenny.png"/>
 								<div className="team-caption">

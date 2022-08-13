@@ -102,26 +102,6 @@ function App() {
 										blockchain database. 
 								</div>
 							</div>
-							<div className="col-md-12 text-center wow zoomInUp">
-								<button 
-									className="mint_button mt-3"
-									onClick={(e) => {
-										e.preventDefault();
-										comingSoon();
-									}}
-								>
-									MINT
-								</button>
-								{/* <button 
-									className="mint_button mt-3"
-									onClick={(e) => {
-										e.preventDefault();
-										comingSoon();
-									}}
-								>
-									CrossMint
-								</button> */}
-							</div>
 						</div>
 					</div>
 				</section>
@@ -134,7 +114,26 @@ function App() {
 						Minetopia is driven to provide a variety of mining opportunities for those who wish to participate through owning a Minetopia NFT. 
 						Participating in a project that utilizes NFTs to give a stake or ownership in a miner’s reward could boost an individual’s portfolio to the next level through sustainable returns driven by community-purchased ASIC miners.
 					</div>
-					
+					<div className="col-md-12 text-center wow zoomInUp my-5">
+						<button 
+							className="mint_button mt-3"
+							onClick={(e) => {
+								e.preventDefault();
+								comingSoon();
+							}}
+						>
+							MINT
+						</button>
+						{/* <button 
+							className="mint_button mt-3"
+							onClick={(e) => {
+								e.preventDefault();
+								comingSoon();
+							}}
+						>
+							CrossMint
+						</button> */}
+					</div>
 					<div className="swiper mySwiper wow fadeIn">
 						<div className="swiper-wrapper">
 							<div className="swiper-slide">

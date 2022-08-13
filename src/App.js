@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import swal  from 'sweetalert';
+import CountdownTimer from './component/CountdownTimer';
 
 function App() {
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -14,6 +15,10 @@ function App() {
 			window.removeEventListener('resize', changeWidth)
 		}
 	}, []);
+
+	const LEFT_DAYS_IN_MS = 30 * 24 * 60 * 60 * 1000;
+  	const NOW_IN_MS = new Date().getTime();
+  	const dateTimeAfterThreeDays = NOW_IN_MS + LEFT_DAYS_IN_MS;
 
 	const toggleNav = () => {
 		setToggleMenu(!toggleMenu)
@@ -69,6 +74,7 @@ function App() {
 						<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 							<span className="section_title line-height-15">WELCOME TO THE MINETOPIA</span>
 						</div>
+						<CountdownTimer targetDate={dateTimeAfterThreeDays} />
 						<div className="text-center pt-30 px-5 line-height-15 font_general wow fadeInUp">
 							Minetopia presents an opportunity for individuals to enter mining through the utility of Non-fungible 
 							Tokens (NFTs). The potential mining options will include Bitcoin (BTC), Ethereum Classic (ETC), 
@@ -106,6 +112,15 @@ function App() {
 									}}
 								>
 									MINT
+								</button>
+								<button 
+									className="mint_button mt-3"
+									onClick={(e) => {
+										e.preventDefault();
+										comingSoon();
+									}}
+								>
+									CrossMint
 								</button>
 							</div>
 						</div>

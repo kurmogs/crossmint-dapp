@@ -15,8 +15,8 @@ function App() {
 			window.removeEventListener('resize', changeWidth)
 		}
 	}, []);
-
-	const LEFT_DAYS_IN_MS = 30 * 24 * 60 * 60 * 1000;
+	"3-2-2015"
+	const LEFT_DAYS_IN_MS = 9 * 24 * 60 * 60 * 1000;
   	const NOW_IN_MS = new Date().getTime();
   	const dateTimeAfterThreeDays = NOW_IN_MS + LEFT_DAYS_IN_MS;
 
@@ -329,17 +329,16 @@ function App() {
 									<div className="twitter">Twitter</div>
 									<a className="color-white" target="_blank" href="">@Westieio</a>
 								</div>
-							</div>
-							<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
-								<img className="team-image" src="./assets/images/christine.png"/>
+							</div><div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
+								<img className="team-image" src="./assets/images/dxniel.png"/>
 								<div className="team-caption">
-									CHRISTINE
+									DXNIEL.ETH
 								</div>
 								<div className="team-desc">
-									<div className="my-2">CMO</div>
-									<div className="my-2">Chief Marketing Officer</div>
+									<div className="my-2">CCO</div>
+									<div className="my-2">Chief Commercial Officer</div>
 									<div className="twitter">Twitter</div>
-									<a className="color-white" target="_blank" href="">@OnlyEyes4Crypto</a>
+									<a className="color-white" target="_blank" href="">@Dxniel.ETH</a>
 								</div>
 							</div>
 							<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
@@ -354,15 +353,15 @@ function App() {
 								</div>
 							</div>
 							<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
-								<img className="team-image" src="./assets/images/dxniel.png"/>
+								<img className="team-image" src="./assets/images/christine.png"/>
 								<div className="team-caption">
-									DXNIEL.ETH
+									CHRISTINE
 								</div>
 								<div className="team-desc">
-									<div className="my-2">CCO</div>
-									<div className="my-2">Chief Commercial Officer</div>
+									<div className="my-2">CMO</div>
+									<div className="my-2">Chief Marketing Officer</div>
 									<div className="twitter">Twitter</div>
-									<a className="color-white" target="_blank" href="">@Dxniel.ETH</a>
+									<a className="color-white" target="_blank" href="">@OnlyEyes4Crypto</a>
 								</div>
 							</div>
 							{/* <div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
@@ -478,7 +477,7 @@ function App() {
 								<p>Our mining operation will be made 100% transparent through a monthly report as well as making the wallet address accessible to the DAO members within the Minetopia Discord.</p>
 							</div>
 						</div>
-						<div className="mt-2 accordion-container footer_round wow slideInRight">
+						{/* <div className="mt-2 accordion-container footer_round wow slideInRight">
 							<button className="accordion py-1">
 								<h1 className="footer-font">CRYPTO FRIENDLY IN MALAYSIA</h1>
 							</button>
@@ -501,7 +500,7 @@ function App() {
 							<div className="panel">
 								<p>A Minetopia DAO membership is directly related to the possession of at least 1 Minetopia NFT. If you wish to forfeit your stake and future mining rewards, you can simply sell your Minetopia NFT(s) and exit the DAO.</p>
 							</div>
-						</div>
+						</div> */}
 						<div className="mt-2 accordion-container footer_round wow slideInRight">
 							<button className="accordion py-1">
 								<h1 className="footer-font">WHY IS THE HOSTING PROVIDER SELECTED IN AUSTRALIA?</h1>

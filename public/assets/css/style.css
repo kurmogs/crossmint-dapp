@@ -76,8 +76,8 @@ a {
 
 .social-block {
     position: absolute;
-    right: 35px;
-    top: 131px;
+    right: 225px;
+    top: 65px;
     text-decoration: none;
     color: #46b104!important;
     font-family: headlinefont;
@@ -123,9 +123,9 @@ nav {
     justify-content: center;
     align-items: center;
     position: relative;
-    top: -105px;
+    top: -100px;
     padding-left: 0;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 .items {
     margin-right: 20px;
@@ -362,8 +362,8 @@ nav {
 }
 
 .img-thumbnail {
-    background-color: #272C34;
-    border-color: #272C34;
+    background-color: #000;
+    border-color: #000;
 }
 
 .swiper-slide {
@@ -613,6 +613,16 @@ nav {
 }
 
 @media only screen and (max-width:1366px) {
+    .social-block {
+        position: absolute;
+        right: 35px;
+        top: 131px;
+        text-decoration: none;
+        color: #46b104!important;
+        font-family: headlinefont;
+        font-size: 28px;
+        cursor: pointer;
+    }
     .navbar_logo {
         font-size: 50px;
         line-height: 50px;

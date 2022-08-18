@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at Etherscan.io on 2022-03-03
-*/
-
 // SPDX-License-Identifier: MIT
 
 // File: @openzeppelin/contracts/utils/introspection/IERC165.sol
@@ -1228,26 +1224,20 @@ contract minetopia is ERC721Enumerable, Ownable {
     using Strings for uint256;
 
     string public baseTokenURI;
-    string public baseExtension = ".json";
+    string public baseExtension = "";
 
     uint256 public maxSupply = 1000;
-    uint256 public maxCollection = 2;
-    // uint256 public maxAirdropSupply = 300;
-
-    bool public isPreSaleActive = false;
-    bool public isPublicSaleActive = false;
+    uint256 public maxCollection = 10;
     bool public paused = false;
-    bool public isFree = false;
 
     uint256 public mintPrice = 0.2 ether;
 
     mapping(address => bool) public whitelist;
     mapping(address => bool) public freeMintWhitelist;
     // Payment Addresses
-    address constant wallet1 = 0x8c78a3B72B90Ec170e718B3c5308e7481A67EB08;
+    address constant wallet1 = 0x79F6fB78E8d1aCb86684dD7D2cBe5BE653c80625;
 
     uint256 public totalWhitelist;
-    uint256 public airdropSupply;
 
     /**
     * @dev Throws if called by any account is not whitelisted.
@@ -1299,15 +1289,26 @@ contract minetopia is ERC721Enumerable, Ownable {
         uint256 tokenCount = balanceOf(msg.sender);
 
         require(tokenCount < maxCollection,            string(abi.encodePacked('You can only mint ', maxCollection.toString(), ' cards per wallet')));
-        require(!isPreSaleActive && !isPublicSaleActive, 'Sale is not active yet');
+        require(supply < maxSupply,                    'No more left');
+        require(msg.value >= mintPrice,                'Ether value is too low');
 
-        require(supply < maxSupply,                     'This transaction would exceed max supply of queen');
-
-        if (supply < maxSupply) {
-            _safeMint(msg.sender, supply + 1);
-        }
-
+        _safeMint(msg.sender, supply + 1);
         require(payable(owner()).send(msg.value));
+    }
+
+    function crossmint(address _to) public payable {
+        uint256 supply = totalSupply();
+        require(mintPrice == msg.value,                "Incorrect ETH value sent");
+        require(supply < maxSupply,                    "No more left");
+        require(msg.sender == 0xdAb1a1854214684acE522439684a145E62505233,
+            "This function is for Crossmint only."
+        );
+
+        _safeMint(_to, supply+ 1);
+    }
+
+    function transferNFT(uint256 _mintCount) public payable onlyWhitelisted {
+        
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
@@ -1364,9 +1365,7 @@ contract minetopia is ERC721Enumerable, Ownable {
     }
     
     //https://etherscan.io/address/0xAFeF885027A59603dfF7837C280DaD772c476b82#code    
-    function withdraw() public payable onlyOwner {
-
-        // wallet1 12.5%
+    function withdraw() public onlyOwner {
         (bool wa1, ) = payable(wallet1).call{value: address(this).balance}("");
         require(wa1);
     }

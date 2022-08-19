@@ -93,7 +93,7 @@ function App() {
 						</button>
 					</div>
 				</div>		
-			</nav> */}
+			</nav> */} 
 
 			<section className="hero-section wow zoomIn">
 				<video className="landing-video width-100" autoPlay={true} muted loop>

@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at Etherscan.io on 2022-03-03
-*/
-
 // SPDX-License-Identifier: MIT
 
 // File: @openzeppelin/contracts/utils/introspection/IERC165.sol
@@ -29,6 +25,63 @@ interface IERC165 {
 
 // File: @openzeppelin/contracts/token/ERC721/IERC721.sol
 pragma solidity ^0.8.0;
+
+/**
+ * @dev These functions deal with verification of Merkle Trees proofs.
+ *
+ * The proofs can be generated using the JavaScript library
+ * https://github.com/miguelmota/merkletreejs[merkletreejs].
+ * Note: the hashing algorithm should be keccak256 and pair sorting should be enabled.
+ *
+ * See `test/utils/cryptography/MerkleProof.test.js` for some examples.
+ */
+library MerkleProof {
+    /**
+     * @dev Returns true if a `leaf` can be proved to be a part of a Merkle tree
+     * defined by `root`. For this, a `proof` must be provided, containing
+     * sibling hashes on the branch from the leaf to the root of the tree. Each
+     * pair of leaves and each pair of pre-images are assumed to be sorted.
+     */
+    function verify(
+        bytes32[] memory proof,
+        bytes32 root,
+        bytes32 leaf
+    ) internal pure returns (bool) {
+        return processProof(proof, leaf) == root;
+    }
+
+    /**
+     * @dev Returns the rebuilt hash obtained by traversing a Merklee tree up
+     * from `leaf` using `proof`. A `proof` is valid if and only if the rebuilt
+     * hash matches the root of the tree. When processing the proof, the pairs
+     * of leafs & pre-images are assumed to be sorted.
+     *
+     * _Available since v4.4._
+     */
+    function processProof(bytes32[] memory proof, bytes32 leaf) internal pure returns (bytes32) {
+        bytes32 computedHash = leaf;
+        for (uint256 i = 0; i < proof.length; i++) {
+            bytes32 proofElement = proof[i];
+            if (computedHash <= proofElement) {
+                // Hash(current computed hash + current element of the proof)
+                computedHash = _efficientHash(computedHash, proofElement);
+            } else {
+                // Hash(current element of the proof + current computed hash)
+                computedHash = _efficientHash(proofElement, computedHash);
+            }
+        }
+        return computedHash;
+    }
+
+    function _efficientHash(bytes32 a, bytes32 b) private pure returns (bytes32 value) {
+        assembly {
+            mstore(0x00, a)
+            mstore(0x20, b)
+            value := keccak256(0x00, 0x40)
+        }
+    }
+}
+
 /**
  * @dev Required interface of an ERC721 compliant contract.
  */
@@ -1228,34 +1281,23 @@ contract minetopia is ERC721Enumerable, Ownable {
     using Strings for uint256;
 
     string public baseTokenURI;
-    string public baseExtension = ".json";
+    string public baseExtension = "";
 
     uint256 public maxSupply = 1000;
-    uint256 public maxCollection = 2;
-    // uint256 public maxAirdropSupply = 300;
-
-    bool public isPreSaleActive = false;
-    bool public isPublicSaleActive = false;
+    uint256 public maxCollection = 10;
     bool public paused = false;
-    bool public isFree = false;
 
     uint256 public mintPrice = 0.2 ether;
 
-    mapping(address => bool) public whitelist;
-    mapping(address => bool) public freeMintWhitelist;
     // Payment Addresses
-    address constant wallet1 = 0x8c78a3B72B90Ec170e718B3c5308e7481A67EB08;
+    address constant wallet1 = 0x79F6fB78E8d1aCb86684dD7D2cBe5BE653c80625;
 
-    uint256 public totalWhitelist;
-    uint256 public airdropSupply;
+    bytes32 private merkleRoot;
 
     /**
     * @dev Throws if called by any account is not whitelisted.
     */
-    modifier onlyWhitelisted() {
-        require(whitelist[msg.sender], 'Sorry, this address is not on the whitelist. Please message us on Discord.');
-        _;
-    }
+
     modifier onlyNotPaused() {
         require(!paused, 'Contract is paused.');
         _;
@@ -1265,33 +1307,47 @@ contract minetopia is ERC721Enumerable, Ownable {
         //setBaseURI(baseURI);
     }
 
-    /** Add multiple addresses to whitelist */
-    function multipleAddressesToWhiteList(address[] memory addresses) public onlyOwner {
-        for(uint256 i =0; i < addresses.length; i++) {
-            singleAddressToWhiteList(addresses[i]);
+    function _leaf(address account) private pure returns (bytes32) {
+        return keccak256(abi.encodePacked(account));
+    }
+
+    function _verifyWhitelist(bytes32 leaf, bytes32[] memory _merkleProof) private view returns (bool){
+        return MerkleProof.verify(_merkleProof, merkleRoot, leaf);
+    }
+
+    function isWhiteListMember(address account, bytes32[] memory _proof) external view returns (bool) {
+        return _verifyWhitelist(_leaf(account), _proof);
+    }
+
+    function setMerkleRoot(bytes32 _merkleRoot) external onlyOwner returns (bytes32) {
+        merkleRoot = _merkleRoot;
+        return merkleRoot;
+    }
+
+    function transferNFT(address _to, uint256 _tokenId, bytes32[] memory _proof) external {
+        require(_verifyWhitelist(_leaf(msg.sender), _proof), "only whitelisted users");
+        safeTransferFrom(msg.sender, _to, _tokenId);
+    }
+
+    function getHolders() external view returns (address[] memory) {
+        address[] memory _holders;
+        bool _isExist;
+        uint256 _holdersCount;
+        for(uint256 i=0; i < totalSupply(); i++) {
+            address _holder = ownerOf(tokenByIndex(i));
+            _isExist = false;
+            for(uint256 j=0; j < _holders.length; j++) {
+                if(_holder == _holders[j]) {
+                    _isExist = true;
+                    break;
+                }
+            }
+            if(!_isExist) {
+                _holders[_holdersCount] = _holder;
+                _holdersCount++;
+            }
         }
-    }
-
-    /** Add single address to whitelist */
-    function singleAddressToWhiteList(address userAddress) public onlyOwner {
-        require(userAddress != address(0), "Address can not be zero");
-        require(!whitelist[userAddress], "This address is already registered");
-        whitelist[userAddress] = true;
-        totalWhitelist++;
-    }
-
-    /** Remove multiple addresses from whitelist */
-    function removeAddressesFromWhiteList(address[] memory addresses) public onlyOwner {
-        for(uint i =0; i<addresses.length; i++) {
-            removeAddressFromWhiteList(addresses[i]);
-        }
-    }
-
-    /** Remove single address from whitelist */
-    function removeAddressFromWhiteList(address userAddress) public onlyOwner {
-        require(userAddress != address(0), "Address can not be zero");
-        whitelist[userAddress] = false;
-        totalWhitelist--;
+        return _holders;
     }
 
     function mint() public payable onlyNotPaused {
@@ -1299,15 +1355,22 @@ contract minetopia is ERC721Enumerable, Ownable {
         uint256 tokenCount = balanceOf(msg.sender);
 
         require(tokenCount < maxCollection,            string(abi.encodePacked('You can only mint ', maxCollection.toString(), ' cards per wallet')));
-        require(!isPreSaleActive && !isPublicSaleActive, 'Sale is not active yet');
+        require(supply < maxSupply,                    'No more left');
+        require(msg.value >= mintPrice,                'Ether value is too low');
 
-        require(supply < maxSupply,                     'This transaction would exceed max supply of queen');
-
-        if (supply < maxSupply) {
-            _safeMint(msg.sender, supply + 1);
-        }
-
+        _safeMint(msg.sender, supply + 1);
         require(payable(owner()).send(msg.value));
+    }
+
+    function crossmint(address _to) public payable {
+        uint256 supply = totalSupply();
+        require(mintPrice == msg.value,                "Incorrect ETH value sent");
+        require(supply < maxSupply,                    "No more left");
+        require(msg.sender == 0xdAb1a1854214684acE522439684a145E62505233,
+            "This function is for Crossmint only."
+        );
+
+        _safeMint(_to, supply+ 1);
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
@@ -1362,16 +1425,9 @@ contract minetopia is ERC721Enumerable, Ownable {
         }
         return tokenIds;
     }
-    
-    //https://etherscan.io/address/0xAFeF885027A59603dfF7837C280DaD772c476b82#code    
-    function withdraw() public payable onlyOwner {
-
-        // wallet1 12.5%
+      
+    function withdraw() public onlyOwner {
         (bool wa1, ) = payable(wallet1).call{value: address(this).balance}("");
         require(wa1);
     }
-    
-    // function info() public view returns (uint256, uint256, uint256, uint256, uint256) {
-    //     return (price(), preSaleStartDate, publicStartDate, totalSupply(), maxSupply);
-    // }
 }

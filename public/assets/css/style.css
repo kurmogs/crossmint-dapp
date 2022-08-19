@@ -146,8 +146,8 @@ nav {
     right: 10px;
     top: 7px;
     padding: 5px;
-    color: #000;
     font-size: 18px;
+    outline: none;
 }
 
 .about-section {
@@ -318,6 +318,26 @@ nav {
     color: #fff;
 }
 
+.connected-button {
+    background-color: #46b104;
+    color: #fff;  
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    border: 1px solid #46b104!important;
+    border-radius: 50px;
+    font-size: 18px;
+    line-height: 35px;
+    padding: 5px 25px;
+    z-index: 1;
+    margin-top: 25px;
+    margin-right: 15px;
+    width: 255px;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+
 .crossmint {
     margin-top: 90px;
     margin-right: 15px;
@@ -347,11 +367,6 @@ nav {
 
 .navbar_button:hover:before {
     width: 100%;
-}
-
-.btn {
-    border: solid black 1px;
-    outline: none;
 }
 
 .nav_menu {
@@ -608,6 +623,9 @@ nav {
         top: 131px;
     }
     .connect-button {
+        margin-top: 15px;
+    }
+    .connected-button {
         margin-top: 15px;
     }
     .crossmint {
@@ -1372,6 +1390,14 @@ h4 {
         margin-right: 15px;
     }
     .connect-button {
+        padding: 2px 0;
+        font-size: 14px;
+        width: 190px;
+        line-height: 25px;
+        margin-top: 0px;
+        margin-right: 5px;
+    }
+    .connected-button {
         padding: 2px 0;
         font-size: 14px;
         width: 190px;

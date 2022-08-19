@@ -68,8 +68,9 @@ function App() {
 
     const getData = () => {
         if (blockchain.account !== "" && blockchain.smartContract !== null) {
-        dispatch(fetchData(blockchain.account));
+        	dispatch(fetchData(blockchain.account));
         }
+		console.log("getdata", getData)
     };
 
     const getConfig = async () => {
@@ -105,8 +106,8 @@ function App() {
 		setToggleMenu(!toggleMenu)
 	}
 
-	const comingSoon = () => {
-		swal("Minetopia NFT coming soon", "", "info");
+	const conectWallet = () => {
+		swal("Please connect Metamask first.", "", "warning");
 	}
 
 	return (
@@ -117,8 +118,12 @@ function App() {
 					<ul className="list">
 						<li className="items"><a className="nav-item" href="#buy">Home</a></li>
 						<li className="items"><a className="nav-item" href="#buy">Mint</a></li>
+						{/* <li className="items"><a className="nav-item" href="#buy">Transfer</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Airdrop</a></li> */}
 						<li className="items"><a className="nav-item" href="#roadmap">Roadmap</a></li>
-						<li className="items"><a className="nav-item" href="#NFT">Whitepaper</a></li>
+						<li className="items">
+							<a className="nav-item" target="_blank" href="https://drive.google.com/file/d/1qFBX18kiXeI9_TlNdKA3jmO6VbSSYve8/view?usp=sharing">Whitepaper</a>
+						</li>
 						<li className="items"><a className="nav-item" href="#team">Team</a></li>
 						<li className="items"><a className="nav-item" href="#faq">Faq</a></li>
 					</ul>
@@ -147,7 +152,7 @@ function App() {
 					>
 						CONNECT WALLET
 					</button>:
-					<span className="connect-button btn ml-2 text-center">
+					<span className="connected-button ml-2 text-center">
 						{String(blockchain.account).substring(0, 4) +
 						"..." +
 						String(blockchain.account).substring(38)
@@ -169,9 +174,6 @@ function App() {
 							"to":"$CrossmintUserAddress"
 						}}
 					/> 
-					{/* <button className="connect-button crossmint btn">
-						BUY WITH CARD
-					</button> */}
 				</div>
 			</nav>
 
@@ -231,10 +233,10 @@ function App() {
 					<div className="col-md-12 text-center wow zoomInUp my-5">
 						<button 
 							className="mint_button mt-3"
-							disabled={claimingNft ? 1 : 0}
+							disabled={claimingNft? 1 : 0}
 							onClick={(e) => {
 								e.preventDefault();
-								claimNFTs();
+								{blockchain.account != null? claimNFTs(): conectWallet()}
 								getData();
 							}}
 						>

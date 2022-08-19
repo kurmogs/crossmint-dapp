@@ -275,7 +275,7 @@ function App() {
 				</section>
 						
 				<section className="join-discord">
-					<div className="row mx-0 main-container">
+					<div className="row main-container">
 						<div className="col-md-5 col-sm-12 text-center wow slideInLeft" data-wow-offset="0">
 							<img className="discord-bee" src="./assets/images/half_logo_trans.png"/>
 						</div>

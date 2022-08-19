@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { connect } from "./redux/blockchain/blockchainActions";
-import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import swal  from 'sweetalert';
 import CountdownTimer from './component/CountdownTimer';
 

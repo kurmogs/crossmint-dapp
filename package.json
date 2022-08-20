@@ -18,7 +18,8 @@
     "sweetalert": "^2.1.2",
     "web-vitals": "^1.0.1",
     "web3": "^1.5.1",
-    "web3-eth-contract": "^1.5.2"
+    "web3-eth-contract": "^1.5.2",
+    "@crossmint/client-sdk-react-ui": "0.1.8-alpha.0"
   },
   "author": "Malin Zhang",
   "license": "MIT",

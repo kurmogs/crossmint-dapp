@@ -11,6 +11,15 @@ html {
 }
 
 @font-face {
+    font-family: 'railwayfont';
+    src: url('../fonts/Raleway-ExtraBold.ttf');
+}
+
+.railway-font {
+    font-family: 'railwayfont';
+}
+
+@font-face {
     font-family: 'Rubik';
     src: url('../fonts/Rubik-VariableFont_wght.ttf');
 }
@@ -35,7 +44,8 @@ html {
 }
 
 body {
-    background-color: #190040;
+    background-color: #000;
+    text-align: justify;
     /* background: url(../images/background1.jpg); */
     /* background-size: 100%; */
 }
@@ -62,6 +72,17 @@ a {
     font-size: 28px;
     cursor: pointer;
     display: none;
+}
+
+.social-block {
+    position: absolute;
+    right: 228px;
+    top: 65px;
+    text-decoration: none;
+    color: #46b104!important;
+    font-family: headlinefont;
+    font-size: 28px;
+    cursor: pointer;
 }
 
 .hero-section {
@@ -102,16 +123,17 @@ nav {
     justify-content: center;
     align-items: center;
     position: relative;
-    top: -45px;
+    top: -100px;
     padding-left: 0;
-    margin-left: 200px;
+    margin-left: 30px;
 }
 .items {
-    margin-right: 25px;
-    font-size: 24px;
+    margin-right: 20px;
+    font-size: 20px;
     color: #f1f1f1;
     cursor: pointer;
-    font-family: "headlinefont";
+    text-transform: uppercase;
+    font-family: "railwayfont";
 }
 
 .btn {
@@ -126,13 +148,13 @@ nav {
 
 .about-section {
     padding-bottom: 50px;
-    background: url(../images/background5.jpg);
+    /* background: url(../images/background5.jpg); */
     background-size: 100% 100%;
     color: yellow!important;
 }
 
 .team-section {
-    background: url(../images/background2.jpg);
+    /* background: url(../images/background2.jpg); */
     background-size: 100% 100%;
 }
 
@@ -158,6 +180,69 @@ nav {
 .fa-link {
     font-size: 45px;
 }
+
+/* Count down timer css start */
+.expired-notice {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid #ebebeb;
+    border-radius: 0.25rem;
+    margin: 0.5rem;
+  }
+  
+  .expired-notice > span {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: red;
+  }
+  
+  .expired-notice > p {
+    font-size: 1.5rem;
+  }
+  
+  .show-counter {
+    padding: 0.5rem;
+  }
+  
+  .show-counter .countdown-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: #46b104;
+  }
+  
+  .show-counter .countdown {
+    line-height: 1.25rem;
+    padding: 0 0.75rem 0 0.75rem;
+    font-size: 30px;
+    color: yellow;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .show-counter .countdown.danger {
+    color: #ff0000;
+  }
+  
+  .show-counter .countdown > p {
+    margin: 0;
+  }
+  
+  .show-counter .countdown > span {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  /* count down timer end */
 
 /* Navbar  BEGIN */
 
@@ -194,7 +279,7 @@ nav {
 }
 
 .swiper-pagination-bullet {
-    background: #000;
+    background: #999;
 }
 
 .swiper-pagination-bullet-active {
@@ -213,19 +298,31 @@ nav {
     font-weight: normal;
     border: 1px solid #46b104!important;
     border-radius: 50px;
-    font-size: 20px;
-    line-height: 46px;
+    font-size: 18px;
+    line-height: 35px;
     padding: 5px 25px;
     display: inline-block;
     transition: all 0.3s;
     z-index: 1;
-    margin-top: 55px;
+    margin-top: 25px;
     margin-right: 15px;
+    width: 210px;
 }
 
 .connect-button:hover {
     background-color: #204e03;
     color: #fff;
+}
+
+.crossmint {
+    margin-top: 90px;
+    margin-right: 15px;
+    background-color: #9c0bf0;
+    border: 1px solid #9c0bf0!important;
+}
+
+.crossmint:hover {
+    background-color: #630c96;
 }
 
 /* button animation */
@@ -266,7 +363,7 @@ nav {
 }
 
 .section_title{
-    font-family: 'headlinefont';
+    font-family: 'railwayfont';
     margin-top: 40px;
     padding-top: 40px;
     font-style: normal;
@@ -277,8 +374,8 @@ nav {
 }
 
 .img-thumbnail {
-    background-color: #272C34;
-    border-color: #272C34;
+    background-color: #000;
+    border-color: #000;
 }
 
 .swiper-slide {
@@ -417,15 +514,19 @@ nav {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-out;
-    background-color: #46b104;
+    background-color: #000;
 
+}
+
+.tokenomic-paragraph {
+    margin-top: 25px;
 }
 
 .panel p {
     color: white;
     font-size: 22px !important;
     line-height: 1.2;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .connected-wallet {
@@ -458,7 +559,7 @@ nav {
 }
 
 .sub-trans {
-    width: 80%;
+    width: 300px;
 }
 
 .top_title {
@@ -492,8 +593,9 @@ nav {
 }
 
 .copyright-section {
-    font-size: 22px;
+    font-size: 16px;
     color: #fff;
+    margin-top: 30px;
 }
 
 /* button animation */
@@ -523,6 +625,22 @@ nav {
 }
 
 @media only screen and (max-width:1366px) {
+    .social-block {
+        position: absolute;
+        right: 35px;
+        top: 131px;
+        text-decoration: none;
+        color: #46b104!important;
+        font-family: headlinefont;
+        font-size: 28px;
+        cursor: pointer;
+    }
+    .connect-button {
+        margin-top: 15px;
+    }
+    .crossmint {
+        margin-top: 75px;
+    }
     .navbar_logo {
         font-size: 50px;
         line-height: 50px;
@@ -595,13 +713,17 @@ nav {
 
 }
 
-@media screen and (max-width: 950px){
+@media screen and (max-width: 1060px){
     .list {
         flex-direction: column;
         height: auto;
+        top: -20px;
         margin-top: 50px;
         margin-left: 0;
     }
+    .social-block {
+        right: 60px;
+     }
     .hero-section {
         margin-top: 20px;
     }
@@ -739,9 +861,9 @@ nav {
 
 .join-discord {
     padding: 2% 2% 4% 2%;
-    background: url(../images/background4.jpg);
+    /* background: url(../images/background4.jpg); */
     background-size: 100% 100%;
-    margin-top: 100px;
+    margin-top: 120px;
     
 }
 
@@ -813,7 +935,7 @@ img {
 
 .section-qa {
     background: transparent;
-    margin-top: 80px;
+    margin-top: 20px;
 }
 
 .section-qa .title h2 {
@@ -822,11 +944,12 @@ img {
 
 .accordion-container {
     border: #46b104 3px solid;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .accordion {
-    background-color: #46b104;
+    background-color: #000;
+    border-radius: 8px;
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -1023,12 +1146,10 @@ h4 {
     .team-desc {
         font-size: 1.8vw;
     }
-    .sub-trans {
-        width: 50%;
-    }
-    .copyright-section {
+    /* .copyright-section {
+        font-size: 3.5vw;
         margin: 30px 0;
-    }
+    } */
     .common_title {
         font-size: 56px;
         line-height: 78px;
@@ -1052,6 +1173,11 @@ h4 {
 
     .team-image {
         padding: 10%;
+        margin-top: 0!important;
+    }
+
+    .team-block {
+        margin-top: 0!important;
     }
 
     .welcome-text-block {
@@ -1105,7 +1231,7 @@ h4 {
     }
 
     .team-image {
-        width: 60%;
+        width: 70%;
         margin-top: 30px;
     }
 
@@ -1159,7 +1285,7 @@ h4 {
     }
 }
 
-@media only screen and (max-width:576px) {
+@media only screen and (max-width: 576px) {
     .common_title {
         font-size: 32px;
         line-height: 37px;
@@ -1173,9 +1299,15 @@ h4 {
         text-align: center;
         /* or 167% */
     }
-}
-
-@media only screen and (max-width: 576px) {
+    .social-block {
+        right: 45px!important;
+        top: 86px;
+        font-size: 15px;
+    }
+    .social-icon {
+        margin-right: 15px;
+        font-size: 24px;
+    }
     .pc {
         display: none;
     }
@@ -1226,4 +1358,37 @@ h4 {
         font-size: 4.5vw;
         margin-bottom: 0;
     }
+    .logo-image {
+        width: 105px;
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+    .items {
+        font-size: 20px;
+        padding: 15px 0;
+    }
+    .social-icon {
+        margin-right: 15px;
+    }
+    .connect-button {
+        padding: 2px 0;
+        font-size: 14px;
+        width: 160px;
+        line-height: 25px;
+        margin-top: 0px;
+        margin-right: 5px;
+    }
+    .crossmint {
+        margin-top: 40px;
+        margin-right: 5px;
+    }
+    .menu-btn {
+        top: 79px;
+        font-size: 24px;
+        right: 21px;
+    }
+    .social-block {
+
+    }
 }
+

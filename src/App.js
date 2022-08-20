@@ -1,10 +1,97 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { connect } from "./redux/blockchain/blockchainActions";
+import { fetchData } from "./redux/data/dataActions";
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import swal  from 'sweetalert';
+import CountdownTimer from './component/CountdownTimer';
 
 function App() {
+	const dispatch = useDispatch();
+	const blockchain = useSelector((state) => state.blockchain);
+    const data = useSelector((state) => state.data);
+    const [claimingNft, setClaimingNft] = useState(false);
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 	const [toggleMenu, setToggleMenu] = useState(false);
+	const [mintAmount, setMintAmount] = useState(1);
+    const [CONFIG, SET_CONFIG] = useState({
+        CONTRACT_ADDRESS: "",
+        SCAN_LINK: "",
+        NETWORK: {
+          NAME: "",
+          SYMBOL: "",
+          ID: 0,
+        },
+        NFT_NAME: "",
+        SYMBOL: "",
+        MAX_SUPPLY: 1,
+        FINNEY_COST: 0,
+        DISPLAY_COST: 0,
+        GAS_LIMIT: 0,
+        MARKETPLACE: "",
+        MARKETPLACE_LINK: "",
+        SHOW_BACKGROUND: false,
+	});
 
+	const LEFT_DAYS_IN_MS = new Date("8-22-2022").getTime()-new Date().getTime();
+	const NOW_IN_MS = new Date().getTime();
+	const dateTimeAfterThreeDays = NOW_IN_MS + LEFT_DAYS_IN_MS;
+
+    const claimNFTs = () => {
+        let cost = CONFIG.WEI_COST;
+        let gasLimit = CONFIG.GAS_LIMIT;
+        let totalCostWei = String(cost * mintAmount);
+        let totalGasLimit = String(gasLimit * mintAmount);
+        setClaimingNft(true);
+        blockchain.smartContract.methods
+        .mint()
+        .send({
+            gasLimit: String(totalGasLimit),
+            to: CONFIG.CONTRACT_ADDRESS,
+            from: blockchain.account,
+            value: totalCostWei,
+        })
+        .once("error", (err) => {
+            console.log(err);
+            swal("Sorry, something went wrong please try again later.", "", "error");
+            setClaimingNft(false);
+        })
+        .then((receipt) => {
+            console.log(receipt);
+            swal(
+            `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`, "", "success"
+            );
+            setClaimingNft(false);
+            dispatch(fetchData(blockchain.account));
+        });
+    };
+
+    const getData = () => {
+        if (blockchain.account !== "" && blockchain.smartContract !== null) {
+        	dispatch(fetchData(blockchain.account));
+        }
+		console.log("getdata", getData)
+    };
+
+    const getConfig = async () => {
+        const configResponse = await fetch("/config/config.json", {
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        });
+        const config = await configResponse.json();
+        SET_CONFIG(config);
+    };
+
+    useEffect(() => {
+        getConfig();
+    }, []);
+
+    useEffect(() => {
+        getData();
+    }, [blockchain.account]);
+	
 	useEffect(() => {
 		const changeWidth = () => {
 		  setScreenWidth(window.innerWidth);
@@ -19,43 +106,76 @@ function App() {
 		setToggleMenu(!toggleMenu)
 	}
 
-	const comingSoon = () => {
-		swal("Minetopia NFT coming soon", "", "info");
+	const conectWallet = () => {
+		swal("Please connect Metamask first.", "", "warning");
 	}
 
 	return (
 		<div>
 			<nav> 
 				<a href="/"><img className="logo-image" src="./assets/images/full_logo.png"/></a>
-				{(toggleMenu || screenWidth > 950) && (
+				{(toggleMenu || screenWidth > 1110) && (
 					<ul className="list">
-						<li className="items"><a className="nav-item" href="#">Home</a></li>
-						<li className="items"><a className="nav-item" href="#buy">Buy</a></li>
-						<li className="items"><a className="nav-item" href="#NFT">Our NFT</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Home</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Mint</a></li>
+						{/* <li className="items"><a className="nav-item" href="#buy">Transfer</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Airdrop</a></li> */}
 						<li className="items"><a className="nav-item" href="#roadmap">Roadmap</a></li>
+						<li className="items">
+							<a className="nav-item" target="_blank" href="https://drive.google.com/file/d/1qFBX18kiXeI9_TlNdKA3jmO6VbSSYve8/view?usp=sharing">Whitepaper</a>
+						</li>
 						<li className="items"><a className="nav-item" href="#team">Team</a></li>
 						<li className="items"><a className="nav-item" href="#faq">Faq</a></li>
 					</ul>
 				)}
+				<div className="social-block">
+					<a href="https://twitter.com/nft_minetopia" target="_blank">
+						<i className="fab fa-twitter social-icon"></i>
+					</a>
+					<a href="https://www.youtube.com/" target="_blank">
+						<i className="fab fa-youtube social-icon"></i>
+					</a>
+					<a href="https://discord.gg/bJ9Z87dFDp" target="_blank">
+						<i className="fab fa-discord social-icon"></i>
+					</a>
+				</div>
 				<a onClick={toggleNav} className="menu-btn"><i className="fas fa-bars"></i></a>
 				<div className="navbar_right">
-					<button className="connect-button btn ml-2">
-						{/* <i className="fa-solid fa-network-wired"></i>  */}
+					{blockchain.account == null && blockchain.account == undefined ? 
+					<button className="connect-button btn ml-2 text-center"
+						onClick={(e) => {
+							e.preventDefault();
+							dispatch(connect());
+							getData();
+						}
+						}
+					>
 						CONNECT WALLET
-					</button>
+					</button>:
+					<span className="connected-button ml-2 text-center">
+						{String(blockchain.account).substring(0, 4) +
+						"..." +
+						String(blockchain.account).substring(38)
+						}
+					</span>
+					}
+				</div>
+				<div className="navbar-right">
+					<CrossmintPayButton
+						className="connect-button crossmint btn"
+						collectionTitle="MineTopia"
+						collectionDescription="Minetopia presents an opportunity for individuals to enter mining through the utility of Non-fungible Tokens (NFTs)."
+						collectionPhoto=""
+						clientId="f2bfb58d-0035-44d8-afff-37355c31da3e"
+						environment="staging"
+						mintConfig={{
+							"type":"erc-721",
+							"totalPrice": "0.2",
+							"to":"$CrossmintUserAddress"
+						}}
+					/> 
 				</div>
 			</nav>
-	{/* 		<nav className="container-fluid wow fadeInDown">
-				<div className="logo">
-					<img className="logo-image" src="./assets/images/full_logo.png"/>
-					<div className="navbar_right">
-						<button className="connect-button btn ml-2">
-							<i className="fa-solid fa-network-wired"></i> 
-							CONNECT WALLET
-						</button>
-					</div>
-				</div>		
-			</nav> */}
 
 			<section className="hero-section wow zoomIn">
 				<video className="landing-video width-100" autoPlay={true} muted loop>
@@ -69,7 +189,8 @@ function App() {
 						<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 							<span className="section_title line-height-15">WELCOME TO THE MINETOPIA</span>
 						</div>
-						<div className="text-center pt-30 px-5 line-height-15 font_general wow fadeInUp">
+						<CountdownTimer targetDate={dateTimeAfterThreeDays} />
+						<div className="text-justify pt-30 px-5 line-height-15 font_general wow fadeInUp">
 							Minetopia presents an opportunity for individuals to enter mining through the utility of Non-fungible 
 							Tokens (NFTs). The potential mining options will include Bitcoin (BTC), Ethereum Classic (ETC), 
 							Kadena (KDA), and Litecoin (LTC) with free Dogecoin (DOGE). As such, the project has found the 
@@ -97,17 +218,6 @@ function App() {
 										blockchain database. 
 								</div>
 							</div>
-							<div className="col-md-12 text-center wow zoomInUp">
-								<button 
-									className="mint_button mt-3"
-									onClick={(e) => {
-										e.preventDefault();
-										comingSoon();
-									}}
-								>
-									MINT
-								</button>
-							</div>
 						</div>
 					</div>
 				</section>
@@ -116,44 +226,58 @@ function App() {
 					<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 						<div className="section_title line-height-15">MINETOPIA NFT</div>
 					</div>
-					<div className="coolbeez-content text-center font_general line-height-18 pt-30 wow bounceIn">
+					<div className="coolbeez-content text-justify font_general line-height-18 pt-30 wow bounceIn">
 						Minetopia is driven to provide a variety of mining opportunities for those who wish to participate through owning a Minetopia NFT. 
 						Participating in a project that utilizes NFTs to give a stake or ownership in a miner’s reward could boost an individual’s portfolio to the next level through sustainable returns driven by community-purchased ASIC miners.
 					</div>
-					
-					<div className="swiper mySwiper wow fadeIn">
+					<div className="col-md-12 text-center wow zoomInUp my-5">
+						<button 
+							className="mint_button mt-3"
+							disabled={claimingNft? 1 : 0}
+							onClick={(e) => {
+								e.preventDefault();
+								{blockchain.account != null? claimNFTs(): conectWallet()}
+								getData();
+							}}
+						>
+ 							{claimingNft ? "MINTING..." : "MINT"}						
+						</button>
+					</div>
+					<div className="row mx-0 main-container">
+						<div className="col-lg-3 col-md-6 col-sm-12">
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
+						</div>
+						<div className="col-lg-3 col-md-6 col-sm-12">
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
+						</div>
+						<div className="col-lg-3 col-md-6 col-sm-12">
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
+						</div>
+						<div className="col-lg-3 col-md-6 col-sm-12">
+							<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
+						</div>
+					</div>
+					{/* <div className="swiper mySwiper wow fadeIn">
 						<div className="swiper-wrapper">
 							<div className="swiper-slide">
 								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
 							</div>
 							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
+								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
 							</div>
 							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
+								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
 							</div>
 							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
-							</div>
-							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
-							</div>
-							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
-							</div>
-							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum.png" alt=""/>
-							</div>
-							<div className="swiper-slide">
-								<img className="slide_image img-thumbnail" src="./assets/images/Kadena.png" alt=""/>
+								<img className="slide_image img-thumbnail" src="./assets/images/Ethereum_blank.png" alt=""/>
 							</div>
 						</div>
 						<div className="swiper-pagination"></div>
-					</div>
+					</div> */}
 				</section>
 						
 				<section className="join-discord">
-					<div className="row mx-0 main-container">
+					<div className="row main-container">
 						<div className="col-md-5 col-sm-12 text-center wow slideInLeft" data-wow-offset="0">
 							<img className="discord-bee" src="./assets/images/half_logo_trans.png"/>
 						</div>
@@ -162,7 +286,7 @@ function App() {
 								<div className="join-discord-title rubik-font">
 									JOIN OUR DISCORD
 								</div>
-								<div className="join-discord-content">
+								<div className="join-discord-content text-justify">
 									Do you want to be on the whitelist? 
 									Or do you want to be a member of our DAO? 
 									Join our Discord to be part of the largest movement ever!
@@ -285,7 +409,7 @@ function App() {
 						<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 							<div className="section_title line-height-15">MEET OUR TEAM</div>
 						</div>
-						<div className="row mx-0 my-5">
+						<div className="row mx-0 my-5 team-block">
 							<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
 								<img className="team-image" src="./assets/images/kenny.png"/>
 								<div className="team-caption">
@@ -296,17 +420,16 @@ function App() {
 									<div className="twitter">Twitter</div>
 									<a className="color-white" target="_blank" href="">@Westieio</a>
 								</div>
-							</div>
-							<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
-								<img className="team-image" src="./assets/images/christine.png"/>
+							</div><div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
+								<img className="team-image" src="./assets/images/dxniel.png"/>
 								<div className="team-caption">
-									CHRISTINE
+									DXNIEL.ETH
 								</div>
 								<div className="team-desc">
-									<div className="my-2">CMO</div>
-									<div className="my-2">Chief Marketing Officer</div>
+									<div className="my-2">CCO</div>
+									<div className="my-2">Chief Commercial Officer</div>
 									<div className="twitter">Twitter</div>
-									<a className="color-white" target="_blank" href="">@OnlyEyes4Crypto</a>
+									<a className="color-white" target="_blank" href="">@Dxniel.ETH</a>
 								</div>
 							</div>
 							<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
@@ -321,15 +444,15 @@ function App() {
 								</div>
 							</div>
 							<div className="col-lg-3 col-md-6 col-sm-12 text-center wow zoomInUp my-3" data-wow-offset="0">
-								<img className="team-image" src="./assets/images/dxniel.png"/>
+								<img className="team-image" src="./assets/images/christine.png"/>
 								<div className="team-caption">
-									DXNIEL.ETH
+									CHRISTINE
 								</div>
 								<div className="team-desc">
-									<div className="my-2">CCO</div>
-									<div className="my-2">Chief Commercial Officer</div>
+									<div className="my-2">CMO</div>
+									<div className="my-2">Chief Marketing Officer</div>
 									<div className="twitter">Twitter</div>
-									<a className="color-white" target="_blank" href="">@Dxniel.ETH</a>
+									<a className="color-white" target="_blank" href="">@OnlyEyes4Crypto</a>
 								</div>
 							</div>
 							{/* <div className="col-lg-2 col-md-6 col-sm-12 text-center wow zoomInUp" data-wow-offset="0">
@@ -445,7 +568,7 @@ function App() {
 								<p>Our mining operation will be made 100% transparent through a monthly report as well as making the wallet address accessible to the DAO members within the Minetopia Discord.</p>
 							</div>
 						</div>
-						<div className="mt-2 accordion-container footer_round wow slideInRight">
+						{/* <div className="mt-2 accordion-container footer_round wow slideInRight">
 							<button className="accordion py-1">
 								<h1 className="footer-font">CRYPTO FRIENDLY IN MALAYSIA</h1>
 							</button>
@@ -468,7 +591,7 @@ function App() {
 							<div className="panel">
 								<p>A Minetopia DAO membership is directly related to the possession of at least 1 Minetopia NFT. If you wish to forfeit your stake and future mining rewards, you can simply sell your Minetopia NFT(s) and exit the DAO.</p>
 							</div>
-						</div>
+						</div> */}
 						<div className="mt-2 accordion-container footer_round wow slideInRight">
 							<button className="accordion py-1">
 								<h1 className="footer-font">WHY IS THE HOSTING PROVIDER SELECTED IN AUSTRALIA?</h1>
@@ -482,23 +605,31 @@ function App() {
 								<h1 className="footer-font">TOKENOMICS</h1>
 							</button>
 							<div className="panel">
-								<p><b>The Community Wallet,</b> will share its rewards from all the Minetopia NFT Phases. This allows the rewards to be increasingly balanced and reliable as the Minetopia miners are diversified through any future NFT Phases.<br/>
-									<b>The Expansion Wallet,</b> will enable the DAO to compound through governance. This is where 1 NFT = 1 vote comes into play, what miners are potentially purchased with these funds and how those tokens are managed such as holding for future value.<br/>
-									<b>The Maintenance & Team Wallet,</b> will provide the necessary funds for expenses associated with up-
-									keeping the miners, development costs, and team payroll.</p>
+								<p>
+									<div>
+										<b>The Community Wallet,</b> will share its rewards from all the Minetopia NFT Phases. This allows the rewards to be increasingly balanced and reliable as the Minetopia miners are diversified through any future NFT Phases.
+									</div>
+									<div className="tokenomic-paragraph">
+										<b>The Expansion Wallet,</b> will enable the DAO to compound through governance. This is where 1 NFT = 1 vote comes into play, what miners are potentially purchased with these funds and how those tokens are managed such as holding for future value.
+									</div>
+									<div className="tokenomic-paragraph">
+										<b>The Maintenance & Team Wallet,</b> will provide the necessary funds for expenses associated with up-
+										keeping the miners, development costs, and team payroll.
+									</div>
+								</p>
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
-			<section className="footer-section row mx-0">
-				<div className="col-lg-3 col-md-12 text-center content-center">
+			<section className="footer-section">
+				<div className="text-center">
 					<img className="sub-trans" src="./assets/images/sub_trans.png"/>
 				</div>
-				<div className="col-lg-7 col-md-12 copyright-section text-center content-center">
+				<div className="copyright-section text-center">
 					Copyright <i className="far fa-copyright"></i> 2022 All Rights Reserved by Minetopia.
 				</div>
-				<div className="col-lg-2 col-md-12 text-center content-center">
+				{/* <div className="col-lg-2 col-md-12 text-center content-center">
 					<a href="https://twitter.com/nft_minetopia" target="_blank">
 						<i className="fab fa-twitter social-icon"></i>
 					</a>
@@ -508,7 +639,7 @@ function App() {
 					<a href="https://discord.gg/bJ9Z87dFDp" target="_blank">
 						<i className="fab fa-discord social-icon"></i>
 					</a>
-				</div>
+				</div> */}
 			</section>
 		</div>
 	);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
-// import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import swal  from 'sweetalert';
 import CountdownTimer from './component/CountdownTimer';
 
@@ -117,9 +117,9 @@ function App() {
 				{(toggleMenu || screenWidth > 1110) && (
 					<ul className="list">
 						<li className="items"><a className="nav-item" href="#buy">Home</a></li>
-						<li className="items"><a className="nav-item" href="#buy">Mint</a></li>
-						{/* <li className="items"><a className="nav-item" href="#buy">Transfer</a></li>
-						<li className="items"><a className="nav-item" href="#buy">Airdrop</a></li> */}
+						<li className="items"><a className="nav-item" href="#buy">Buy</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Transfer</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Airdrop</a></li>
 						<li className="items"><a className="nav-item" href="#roadmap">Roadmap</a></li>
 						<li className="items">
 							<a className="nav-item" target="_blank" href="https://drive.google.com/file/d/1qFBX18kiXeI9_TlNdKA3jmO6VbSSYve8/view?usp=sharing">Whitepaper</a>
@@ -160,7 +160,7 @@ function App() {
 					</span>
 					}
 				</div>
-				{/* <div className="navbar-right">
+				<div className="navbar-right">
 					<CrossmintPayButton
 						className="connect-button crossmint btn"
 						collectionTitle="MineTopia"
@@ -174,7 +174,7 @@ function App() {
 							"to":"$CrossmintUserAddress"
 						}}
 					/> 
-				</div> */}
+				</div>
 			</nav>
 
 			<section className="hero-section wow zoomIn">

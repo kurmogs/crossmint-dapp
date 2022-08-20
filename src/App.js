@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
-// import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import swal  from 'sweetalert';
 import CountdownTimer from './component/CountdownTimer';
 
@@ -161,7 +161,7 @@ function App() {
 					}
 				</div>
 				<div className="navbar-right">
-					{/* <CrossmintPayButton
+					<CrossmintPayButton
 						className="connect-button crossmint btn"
 						collectionTitle="MineTopia"
 						collectionDescription="Minetopia presents an opportunity for individuals to enter mining through the utility of Non-fungible Tokens (NFTs)."
@@ -173,7 +173,7 @@ function App() {
 							"totalPrice": "0.2",
 							"to":"$CrossmintUserAddress"
 						}}
-					/>  */}
+					/> 
 				</div>
 			</nav>
 

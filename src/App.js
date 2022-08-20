@@ -166,11 +166,11 @@ function App() {
 						collectionTitle="MineTopia"
 						collectionDescription="Minetopia presents an opportunity for individuals to enter mining through the utility of Non-fungible Tokens (NFTs)."
 						collectionPhoto=""
-						clientId="f2bfb58d-0035-44d8-afff-37355c31da3e"
+						clientId="d45d7e77-0861-46ad-a65b-c828d6359504"
 						environment="staging"
 						mintConfig={{
 							"type":"erc-721",
-							"totalPrice": "0.2",
+							"totalPrice": "0.15",
 							"to":"$CrossmintUserAddress"
 						}}
 					/> 

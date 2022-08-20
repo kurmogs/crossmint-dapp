@@ -1290,7 +1290,7 @@ contract minetopia is ERC721Enumerable, Ownable {
     uint256 public mintPrice = 0.2 ether;
 
     // Payment Addresses
-    address constant wallet1 = 0x79F6fB78E8d1aCb86684dD7D2cBe5BE653c80625;
+    address constant wallet1 = 0x2307962b8E30aec64B92fe0DAdA7D687498FE0f2;
 
     bytes32 private merkleRoot;
 

@@ -1,18 +1,106 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { connect } from "./redux/blockchain/blockchainActions";
+import { fetchData } from "./redux/data/dataActions";
+// import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import swal  from 'sweetalert';
 import CountdownTimer from './component/CountdownTimer';
 
 function App() {
 	const dispatch = useDispatch();
 	const blockchain = useSelector((state) => state.blockchain);
+    const data = useSelector((state) => state.data);
     const [claimingNft, setClaimingNft] = useState(false);
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 	const [toggleMenu, setToggleMenu] = useState(false);
+	const [mintAmount, setMintAmount] = useState(1);
+    const [CONFIG, SET_CONFIG] = useState({
+        CONTRACT_ADDRESS: "",
+        SCAN_LINK: "",
+        NETWORK: {
+          NAME: "",
+          SYMBOL: "",
+          ID: 0,
+        },
+        NFT_NAME: "",
+        SYMBOL: "",
+        MAX_SUPPLY: 1,
+        FINNEY_COST: 0,
+        DISPLAY_COST: 0,
+        GAS_LIMIT: 0,
+        MARKETPLACE: "",
+        MARKETPLACE_LINK: "",
+        SHOW_BACKGROUND: false,
+	});
 
-	const LEFT_DAYS_IN_MS = new Date("8-22-2022").getTime()-new Date().getTime();
+	const LEFT_DAYS_IN_MS = new Date("2022-08-24T12:00:00-16:00").getTime()-new Date().getTime();
 	const NOW_IN_MS = new Date().getTime();
 	const dateTimeAfterThreeDays = NOW_IN_MS + LEFT_DAYS_IN_MS;
+
+    const claimNFTs = () => {
+        let cost = CONFIG.WEI_COST;
+        let gasLimit = CONFIG.GAS_LIMIT;
+        let totalCostWei = String(cost * mintAmount);
+        let totalGasLimit = String(gasLimit * mintAmount);
+        setClaimingNft(true);
+        blockchain.smartContract.methods
+        .mint()
+        .send({
+            gasLimit: String(totalGasLimit),
+            to: CONFIG.CONTRACT_ADDRESS,
+            from: blockchain.account,
+            value: totalCostWei,
+        })
+        .once("error", (err) => {
+            console.log(err);
+            swal("Sorry, something went wrong please try again later.", "", "error");
+            setClaimingNft(false);
+        })
+        .then((receipt) => {
+            console.log(receipt);
+            swal(
+            `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`, "", "success"
+            );
+            setClaimingNft(false);
+            dispatch(fetchData(blockchain.account));
+        });
+    };
+
+    const getData = () => {
+        if (blockchain.account !== "" && blockchain.smartContract !== null) {
+        	dispatch(fetchData(blockchain.account));
+        }
+		console.log("getdata", getData)
+    };
+
+    const getConfig = async () => {
+        const configResponse = await fetch("/config/config.json", {
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        });
+        const config = await configResponse.json();
+        SET_CONFIG(config);
+    };
+
+    useEffect(() => {
+        getConfig();
+    }, []);
+
+    useEffect(() => {
+        getData();
+    }, [blockchain.account]);
+	
+	useEffect(() => {
+		const changeWidth = () => {
+		  setScreenWidth(window.innerWidth);
+		}
+		window.addEventListener('resize', changeWidth);
+		return () => {
+			window.removeEventListener('resize', changeWidth)
+		}
+	}, []);
 
 	const toggleNav = () => {
 		setToggleMenu(!toggleMenu)
@@ -30,6 +118,8 @@ function App() {
 					<ul className="list">
 						<li className="items"><a className="nav-item" href="#buy">Home</a></li>
 						<li className="items"><a className="nav-item" href="#buy">Mint</a></li>
+						{/* <li className="items"><a className="nav-item" href="#buy">Transfer</a></li>
+						<li className="items"><a className="nav-item" href="#buy">Airdrop</a></li> */}
 						<li className="items"><a className="nav-item" href="#roadmap">Roadmap</a></li>
 						<li className="items">
 							<a className="nav-item" target="_blank" href="https://drive.google.com/file/d/1qFBX18kiXeI9_TlNdKA3jmO6VbSSYve8/view?usp=sharing">Whitepaper</a>
@@ -70,7 +160,7 @@ function App() {
 					</span>
 					}
 				</div>
-				<div className="navbar-right">
+				{/* <div className="navbar-right">
 					<CrossmintPayButton
 						className="connect-button crossmint btn"
 						collectionTitle="MineTopia"
@@ -84,7 +174,7 @@ function App() {
 							"to":"$CrossmintUserAddress"
 						}}
 					/> 
-				</div>
+				</div> */}
 			</nav>
 
 			<section className="hero-section wow zoomIn">

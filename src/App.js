@@ -33,23 +33,23 @@ function App() {
         SHOW_BACKGROUND: false,
 	});
 
-	const LEFT_DAYS_IN_MS = new Date("8-22-2022").getTime()-new Date().getTime();
+	const LEFT_DAYS_IN_MS = new Date("2022-08-31T12:00:00-00:00").getTime()-new Date().getTime();
 	const NOW_IN_MS = new Date().getTime();
 	const dateTimeAfterThreeDays = NOW_IN_MS + LEFT_DAYS_IN_MS;
 
     const claimNFTs = () => {
-        let cost = CONFIG.WEI_COST;
+        let cost = data.cost;
         let gasLimit = CONFIG.GAS_LIMIT;
         let totalCostWei = String(cost * mintAmount);
         let totalGasLimit = String(gasLimit * mintAmount);
         setClaimingNft(true);
         blockchain.smartContract.methods
-        .mint()
+        .mint(mintAmount)
         .send({
             gasLimit: String(totalGasLimit),
             to: CONFIG.CONTRACT_ADDRESS,
             from: blockchain.account,
-            value: totalCostWei,
+            value: totalCostWei
         })
         .once("error", (err) => {
             console.log(err);
@@ -66,11 +66,23 @@ function App() {
         });
     };
 
+	const countPlus = () => {
+		if (mintAmount<10) {
+			setMintAmount(mintAmount+1);
+		}
+	}
+
+	const countMinus = () => {
+		if (mintAmount>1) {
+			setMintAmount(mintAmount-1);
+		}
+	}
+
     const getData = () => {
         if (blockchain.account !== "" && blockchain.smartContract !== null) {
         	dispatch(fetchData(blockchain.account));
         }
-		console.log("getdata", getData)
+		console.log("blockchaindata", data)
     };
 
     const getConfig = async () => {
@@ -116,8 +128,8 @@ function App() {
 				<a href="/"><img className="logo-image" src="./assets/images/full_logo.png"/></a>
 				{(toggleMenu || screenWidth > 1110) && (
 					<ul className="list">
-						<li className="items"><a className="nav-item" href="#buy">Home</a></li>
-						<li className="items"><a className="nav-item" href="#buy">Mint</a></li>
+						<li className="items"><a className="nav-item" href="#">Home</a></li>
+						<li className="items"><a className="nav-item" href="#mint">Mint</a></li>
 						{/* <li className="items"><a className="nav-item" href="#buy">Transfer</a></li>
 						<li className="items"><a className="nav-item" href="#buy">Airdrop</a></li> */}
 						<li className="items"><a className="nav-item" href="#roadmap">Roadmap</a></li>
@@ -166,11 +178,11 @@ function App() {
 						collectionTitle="MineTopia"
 						collectionDescription="Minetopia presents an opportunity for individuals to enter mining through the utility of Non-fungible Tokens (NFTs)."
 						collectionPhoto=""
-						clientId="f2bfb58d-0035-44d8-afff-37355c31da3e"
+						clientId="fd665c5b-40c9-423b-b286-8701bb135f63"
 						environment="staging"
 						mintConfig={{
 							"type":"erc-721",
-							"totalPrice": "0.2",
+							"totalPrice": "0.1",
 							"to":"$CrossmintUserAddress"
 						}}
 					/> 
@@ -189,7 +201,7 @@ function App() {
 						<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 							<span className="section_title line-height-15">WELCOME TO THE MINETOPIA</span>
 						</div>
-						<CountdownTimer targetDate={dateTimeAfterThreeDays} />
+						{/* <CountdownTimer targetDate={dateTimeAfterThreeDays} /> */}
 						<div className="text-justify pt-30 px-5 line-height-15 font_general wow fadeInUp">
 							Minetopia presents an opportunity for individuals to enter mining through the utility of Non-fungible 
 							Tokens (NFTs). The potential mining options will include Bitcoin (BTC), Ethereum Classic (ETC), 
@@ -222,7 +234,7 @@ function App() {
 					</div>
 				</section>
 
-				<section className="slide-container main-container" id="NFT">
+				<section className="slide-container main-container" id="mint">
 					<div className="col-12 text-center d-flex justify-content-center wow fadeInUp">
 						<div className="section_title line-height-15">MINETOPIA NFT</div>
 					</div>
@@ -230,7 +242,12 @@ function App() {
 						Minetopia is driven to provide a variety of mining opportunities for those who wish to participate through owning a Minetopia NFT. 
 						Participating in a project that utilizes NFTs to give a stake or ownership in a miner’s reward could boost an individual’s portfolio to the next level through sustainable returns driven by community-purchased ASIC miners.
 					</div>
-					<div className="col-md-12 text-center wow zoomInUp my-5">
+					<div className="col-md-12 text-center count-section">
+						<button onClick={countMinus} className="count-btn count-minus">-</button>
+						<span className="mint-amount">{mintAmount}</span>
+						<button onClick={countPlus} className="count-btn">+</button>
+					</div>
+					<div className="col-md-12 text-center wow zoomInUp mint-button-section">
 						<button 
 							className="mint_button mt-3"
 							disabled={claimingNft? 1 : 0}
@@ -240,7 +257,7 @@ function App() {
 								getData();
 							}}
 						>
- 							{claimingNft ? "MINTING..." : "MINT"}						
+ 							{claimingNft ? "MINTING..." : "MINT"}{data.totalSupply>0? <span className="mint-count">({data.totalSupply}/1000)</span>: <span></span>}		
 						</button>
 					</div>
 					<div className="row mx-0 main-container">

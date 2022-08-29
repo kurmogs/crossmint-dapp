@@ -1285,12 +1285,11 @@ contract minetopia is ERC721Enumerable, Ownable {
 
     uint256 public maxSupply = 1000;
     uint256 public maxCollection = 10;
-    bool public paused = false;
+    bool public paused = true;
 
-    uint256 public mintPrice = 0.2 ether;
+    uint256 public mintPrice = 0.17 ether;
 
-    // Payment Addresses
-    address constant wallet1 = 0x79F6fB78E8d1aCb86684dD7D2cBe5BE653c80625;
+    address public wallet = 0x2307962b8E30aec64B92fe0DAdA7D687498FE0f2;
 
     bytes32 private merkleRoot;
 
@@ -1350,16 +1349,19 @@ contract minetopia is ERC721Enumerable, Ownable {
         return _holders;
     }
 
-    function mint() public payable onlyNotPaused {
+    function mint(uint256 _mint_count) public payable onlyNotPaused {
         uint256 supply = totalSupply();
         uint256 tokenCount = balanceOf(msg.sender);
 
         require(tokenCount < maxCollection,            string(abi.encodePacked('You can only mint ', maxCollection.toString(), ' cards per wallet')));
-        require(supply < maxSupply,                    'No more left');
-        require(msg.value >= mintPrice,                'Ether value is too low');
+        require(_mint_count <= maxCollection-tokenCount,  string(abi.encodePacked('You can only mint ', maxCollection.toString(), ' cards per wallet')));
+        require(supply + _mint_count <= maxSupply,        'Purchase would exceed max supply of tokens');
+        require(_mint_count > 0,                        'Mint count cannot be 0');
+        require(msg.value >= _mint_count*mintPrice,      'Ether value is too low');
 
-        _safeMint(msg.sender, supply + 1);
-        require(payable(owner()).send(msg.value));
+        for (uint256 i = 1; i <= _mint_count; i++) {
+            _safeMint(msg.sender, supply + i);
+        }
     }
 
     function crossmint(address _to) public payable {
@@ -1371,6 +1373,10 @@ contract minetopia is ERC721Enumerable, Ownable {
         );
 
         _safeMint(_to, supply+ 1);
+    }
+
+    function cost() public view returns (uint256) {
+        return mintPrice;
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
@@ -1405,7 +1411,13 @@ contract minetopia is ERC721Enumerable, Ownable {
         mintPrice = _mint_price;
     }
 
+    function setMaxCollection(uint256 _max_collection) public onlyOwner {
+        maxCollection = _max_collection;
+    }
+
     function setSupply(uint256 _max_supply) public onlyOwner {
+        uint256 supply = totalSupply();
+        require(_max_supply > supply,      'max supply would be less than current supply');
         maxSupply = _max_supply;
     }
     
@@ -1425,9 +1437,13 @@ contract minetopia is ERC721Enumerable, Ownable {
         }
         return tokenIds;
     }
+
+    function changeWithdrawWallet(address walletaddress) public onlyOwner {
+        wallet = walletaddress;
+    }
       
     function withdraw() public onlyOwner {
-        (bool wa1, ) = payable(wallet1).call{value: address(this).balance}("");
+        (bool wa1, ) = payable(wallet).call{value: address(this).balance}("");
         require(wa1);
     }
 }
